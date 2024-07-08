@@ -1,0 +1,124 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "status": true,
+      "firstName": "John",
+      "lastName": "Doe",
+      "phoneNumber": "1234567890",
+      "email": "john.doe@example.com",
+      "department": "HR",
+      "salary": 50000,
+      "entryDate": "2023-01-01",
+      "leaveDate": null
+    },
+    {
+      "id": 2,
+      "status": true,
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "phoneNumber": "2345678901",
+      "email": "jane.smith@example.com",
+      "department": "Finance",
+      "salary": 60000,
+      "entryDate": "2023-02-01",
+      "leaveDate": null
+    },
+    {
+      "id": 3,
+      "status": true,
+      "firstName": "Michael",
+      "lastName": "Brown",
+      "phoneNumber": "3456789012",
+      "email": "michael.brown@example.com",
+      "department": "IT",
+      "salary": 75000,
+      "entryDate": "2023-03-01",
+      "leaveDate": null
+    },
+    {
+      "id": 4,
+      "status": false,
+      "firstName": "Emily",
+      "lastName": "Davis",
+      "phoneNumber": "4567890123",
+      "email": "emily.davis@example.com",
+      "department": "Marketing",
+      "salary": 55000,
+      "entryDate": "2023-04-01",
+      "leaveDate": "2024-01-01"
+    },
+    {
+      "id": 5,
+      "status": true,
+      "firstName": "Christopher",
+      "lastName": "Wilson",
+      "phoneNumber": "5678901234",
+      "email": "christopher.wilson@example.com",
+      "department": "Sales",
+      "salary": 65000,
+      "entryDate": "2023-05-01",
+      "leaveDate": null
+    },
+    {
+      "id": 6,
+      "status": true,
+      "firstName": "Sarah",
+      "lastName": "Moore",
+      "phoneNumber": "6789012345",
+      "email": "sarah.moore@example.com",
+      "department": "HR",
+      "salary": 52000,
+      "entryDate": "2023-06-01",
+      "leaveDate": null
+    },
+    {
+      "id": 7,
+      "status": true,
+      "firstName": "David",
+      "lastName": "Taylor",
+      "phoneNumber": "7890123456",
+      "email": "david.taylor@example.com",
+      "department": "Finance",
+      "salary": 58000,
+      "entryDate": "2023-07-01",
+      "leaveDate": null
+    },
+    {
+      "id": 8,
+      "status": true,
+      "firstName": "Laura",
+      "lastName": "Anderson",
+      "phoneNumber": "8901234567",
+      "email": "laura.anderson@example.com",
+      "department": "IT",
+      "salary": 70000,
+      "entryDate": "2023-08-01",
+      "leaveDate": null
+    },
+    {
+      "id": 9,
+      "status": true,
+      "firstName": "Daniel",
+      "lastName": "Thomas",
+      "phoneNumber": "9012345678",
+      "email": "daniel.thomas@example.com",
+      "department": "Marketing",
+      "salary": 53000,
+      "entryDate": "2023-09-01",
+      "leaveDate": null
+    },
+    {
+      "id": 10,
+      "status": true,
+      "firstName": "Sophia",
+      "lastName": "Jackson",
+      "phoneNumber": "0123456789",
+      "email": "sophia.jackson@example.com",
+      "department": "Sales",
+      "salary": 62000,
+      "entryDate": "2023-10-01",
+      "leaveDate": null
+    }
+  ]
+}

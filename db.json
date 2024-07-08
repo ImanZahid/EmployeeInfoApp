@@ -10,7 +10,7 @@
       "department": "HR",
       "salary": 50000,
       "entryDate": "2023-01-01",
-      "leaveDate": null
+      "leaveDate": "-"
     },
     {
       "id": 2,
@@ -22,7 +22,7 @@
       "department": "Finance",
       "salary": 60000,
       "entryDate": "2023-02-01",
-      "leaveDate": null
+      "leaveDate": "-"
     },
     {
       "id": 3,
@@ -34,7 +34,7 @@
       "department": "IT",
       "salary": 75000,
       "entryDate": "2023-03-01",
-      "leaveDate": null
+      "leaveDate": "-"
     },
     {
       "id": 4,
@@ -58,7 +58,7 @@
       "department": "Sales",
       "salary": 65000,
       "entryDate": "2023-05-01",
-      "leaveDate": null
+      "leaveDate": "-"
     },
     {
       "id": 6,
@@ -70,7 +70,7 @@
       "department": "HR",
       "salary": 52000,
       "entryDate": "2023-06-01",
-      "leaveDate": null
+      "leaveDate": "-"
     },
     {
       "id": 7,
@@ -82,7 +82,7 @@
       "department": "Finance",
       "salary": 58000,
       "entryDate": "2023-07-01",
-      "leaveDate": null
+      "leaveDate": "-"
     },
     {
       "id": 8,
@@ -94,7 +94,7 @@
       "department": "IT",
       "salary": 70000,
       "entryDate": "2023-08-01",
-      "leaveDate": null
+      "leaveDate": "-"
     },
     {
       "id": 9,
@@ -106,7 +106,7 @@
       "department": "Marketing",
       "salary": 53000,
       "entryDate": "2023-09-01",
-      "leaveDate": null
+      "leaveDate": "-"
     },
     {
       "id": 10,
@@ -118,7 +118,34 @@
       "department": "Sales",
       "salary": 62000,
       "entryDate": "2023-10-01",
+      "leaveDate": "-"
+    },
+    {
+      "id": "0f39",
+      "status": true,
+      "firstName": "Iman",
+      "lastName": "Zahid",
+      "phoneNumber": "05313913493",
+      "email": "imanzahidzahid3@gmail.com",
+      "department": "Marketing",
+      "salary": 11111111111111,
+      "entryDate": "2024-07-07T19:00:00.000Z",
       "leaveDate": null
+    },
+    {
+      "id": "54d1",
+      "status": true,
+      "firstName": "osama",
+      "lastName": "Tanveer",
+      "phoneNumber": "03358111645",
+      "email": "m.shehrozzahid76@gmail.com",
+      "department": {
+        "label": "IT",
+        "value": "IT"
+      },
+      "salary": 20000,
+      "entryDate": "2024-07-25T19:00:00.000Z",
+      "leaveDate": "-"
     }
   ]
 }

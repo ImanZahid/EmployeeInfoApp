@@ -7,7 +7,7 @@ import { Employee } from '../models/employee.model';
   providedIn: 'root', // making it available throughout the application.
 })
 export class EmployeeService {
-  private apiURL = 'http://localhost:3000/employees';
+  private apiURL = 'http://localhost:3000/employees'; //base url
   constructor(private http: HttpClient) {}
 
   //Getting all the employees

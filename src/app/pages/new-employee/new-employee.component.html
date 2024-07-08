@@ -1,1 +1,109 @@
-<p>new-employee works!</p>
+<div class="container flex justify-content-center align-items-center">
+  <div class="form-container">
+    <h1>Add New Employee</h1>
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+      <div class="switch-group">
+        <label>Status</label>
+        <p-inputSwitch formControlName="status"></p-inputSwitch>
+      </div>
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text" pInputText formControlName="firstName" />
+        <div
+          *ngIf="
+            employeeForm.get('firstName')!.invalid &&
+            employeeForm.get('firstName')!.touched
+          "
+        >
+          <small class="p-error">First Name is required characters.</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" pInputText formControlName="lastName" />
+        <div
+          *ngIf="
+            employeeForm.get('lastName')!.invalid &&
+            employeeForm.get('lastName')!.touched
+          "
+        >
+          <small class="p-error">Last Name is required characters.</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="text" pInputText formControlName="phoneNumber" />
+        <div
+          *ngIf="
+            employeeForm.get('phoneNumber')!.invalid &&
+            employeeForm.get('phoneNumber')!.touched
+          "
+        >
+          <small class="p-error">Phone Number is required</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" pInputText formControlName="email" />
+        <div
+          *ngIf="
+            employeeForm.get('email')!.invalid &&
+            employeeForm.get('email')!.touched
+          "
+        >
+          <small class="p-error">Email is required</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Department</label>
+        <p-dropdown
+          [options]="departments"
+          formControlName="department"
+          placeholder="Select a Department"
+          optionLabel="label"
+          [style]="{ width: '100%' }"
+        ></p-dropdown>
+      </div>
+      <div class="form-group">
+        <label>Salary</label>
+        <input type="number" pInputText formControlName="salary" />
+      </div>
+      <div class="form-group">
+        <label>Entry Date</label>
+        <p-calendar
+          formControlName="entryDate"
+          dateFormat="yy-mm-dd"
+          [style]="{ width: '100%' }"
+        ></p-calendar>
+      </div>
+      <div class="form-group" *ngIf="!employeeForm.get('status')!.value">
+        <label>Leave Date</label>
+        <p-calendar
+          formControlName="leaveDate"
+          dateFormat="yy-mm-dd"
+          [style]="{ width: '100%' }"
+        ></p-calendar>
+      </div>
+      <div class="button-group">
+        <div class="card flex justify-content-start">
+          <button
+            pButton
+            pRipple
+            label="Back"
+            class="p-button-secondary"
+            (click)="onBack()"
+          ></button>
+        </div>
+        <div class="card flex justify-content-end">
+          <button
+            pButton
+            pRipple
+            label="Save"
+            class="p-button-success"
+            [disabled]="employeeForm.invalid"
+          ></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

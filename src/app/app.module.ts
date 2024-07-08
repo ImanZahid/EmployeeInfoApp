@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { ListComponent } from './pages/list/list.component';
@@ -11,12 +12,13 @@ import { EditEmployeeComponent } from './pages/edit-employee/edit-employee.compo
 import { AppRoutingModule } from './app-routing.module';
 
 import { TableModule } from 'primeng/table';
-import { ButtonModule } from 'primeng/button';
-import { InputTextModule } from 'primeng/inputtext';
-import { DropdownModule } from 'primeng/dropdown';
-import { CalendarModule } from 'primeng/calendar';
 import { ToastModule } from 'primeng/toast';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { DropdownModule } from 'primeng/dropdown';
+import { CalendarModule } from 'primeng/calendar';
+import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 
 @NgModule({
@@ -41,6 +43,8 @@ import { CheckboxModule } from 'primeng/checkbox';
     ToastModule,
     InputNumberModule,
     CheckboxModule,
+    BrowserAnimationsModule,
+    InputSwitchModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

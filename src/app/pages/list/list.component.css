@@ -1,0 +1,29 @@
+.container {
+  padding: 10px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.p-table {
+  margin-top: 20px;
+}
+
+.p-button {
+  margin: 5px;
+  margin-bottom: 20px;
+}
+
+.action-link {
+  cursor: pointer;
+  color: #050505;
+}
+
+.action-link:hover {
+  text-decoration: underline;
+
+  color: #202122;
+}

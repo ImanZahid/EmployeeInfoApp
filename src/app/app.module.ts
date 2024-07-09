@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MessageService, ConfirmationService } from 'primeng/api';
 
 import { AppComponent } from './app.component';
 import { ListComponent } from './pages/list/list.component';
@@ -21,7 +23,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { ConfirmationService } from 'primeng/api';
+import { ToastInterceptor } from './services/toast.interceptor';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,15 @@ import { ConfirmationService } from 'primeng/api';
     InputSwitchModule,
     ConfirmDialogModule,
   ],
-  providers: [],
+  providers: [
+    MessageService,
+    ConfirmationService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ToastInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

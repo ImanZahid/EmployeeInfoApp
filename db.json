@@ -1,18 +1,6 @@
 {
   "employees": [
     {
-      "status": true,
-      "firstName": "Christopher",
-      "lastName": "Wilson",
-      "phoneNumber": 222222222222,
-      "email": "christopher.wilson@example.com",
-      "department": "Sales",
-      "salary": 65000,
-      "entryDate": "2023-05-01T00:00:00.000Z",
-      "leaveDate": "-",
-      "id": "100000005"
-    },
-    {
       "id": "266308212",
       "status": false,
       "firstName": "Damon",
@@ -59,6 +47,42 @@
       "salary": 66,
       "entryDate": "2024-10-17T19:00:00.000Z",
       "leaveDate": "2024-11-28T19:00:00.000Z"
+    },
+    {
+      "id": "878703221",
+      "status": true,
+      "firstName": "Iman",
+      "lastName": "Zahid",
+      "phoneNumber": 5313913493,
+      "email": "imanzahidzahid3@gmail.com",
+      "department": "HR",
+      "salary": 22222,
+      "entryDate": "2024-07-10T19:00:00.000Z",
+      "leaveDate": "-"
+    },
+    {
+      "id": "503441608",
+      "status": true,
+      "firstName": "Aria",
+      "lastName": "Ria",
+      "phoneNumber": 2222222222,
+      "email": "Ria@gmail.com",
+      "department": "Marketing",
+      "salary": 3333333,
+      "entryDate": "2024-07-26T19:00:00.000Z",
+      "leaveDate": "-"
+    },
+    {
+      "status": true,
+      "firstName": "Ariaa",
+      "lastName": "Ria",
+      "phoneNumber": 2222222222,
+      "email": "Ria@gmail.com",
+      "department": "Marketing",
+      "salary": 3333333,
+      "entryDate": "2024-07-26T19:00:00.000Z",
+      "leaveDate": "-",
+      "id": "419077486"
     }
   ]
 }

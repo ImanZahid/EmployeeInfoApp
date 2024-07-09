@@ -1,7 +1,7 @@
 {
   "employees": [
     {
-      "id": 100000001,
+      "id": "100000001",
       "status": true,
       "firstName": "John",
       "lastName": "Doe",
@@ -13,7 +13,7 @@
       "leaveDate": "-"
     },
     {
-      "id": 100000003,
+      "id": "100000003",
       "status": true,
       "firstName": "Michael",
       "lastName": "Brown",
@@ -25,7 +25,7 @@
       "leaveDate": "-"
     },
     {
-      "id": 100000004,
+      "id": "100000004",
       "status": false,
       "firstName": "Emily",
       "lastName": "Davis",
@@ -37,7 +37,7 @@
       "leaveDate": "2024-01-01"
     },
     {
-      "id": 100000005,
+      "id": "100000005",
       "status": true,
       "firstName": "Christopher",
       "lastName": "Wilson",
@@ -49,7 +49,7 @@
       "leaveDate": "-"
     },
     {
-      "id": 100000006,
+      "id": "100000006",
       "status": true,
       "firstName": "Sarah",
       "lastName": "Moore",
@@ -61,7 +61,7 @@
       "leaveDate": "-"
     },
     {
-      "id": 100000007,
+      "id": "100000007",
       "status": true,
       "firstName": "David",
       "lastName": "Taylor",
@@ -73,7 +73,7 @@
       "leaveDate": "-"
     },
     {
-      "id": 100000008,
+      "id": "100000008",
       "status": true,
       "firstName": "Laura",
       "lastName": "Anderson",
@@ -85,7 +85,7 @@
       "leaveDate": "-"
     },
     {
-      "id": 100000009,
+      "id": "100000009",
       "status": true,
       "firstName": "Daniel",
       "lastName": "Thomas",
@@ -97,7 +97,7 @@
       "leaveDate": "-"
     },
     {
-      "id": 100000010,
+      "id": "100000010",
       "status": true,
       "firstName": "Sophia",
       "lastName": "Jackson",
@@ -109,7 +109,7 @@
       "leaveDate": "-"
     },
     {
-      "id": 100000011,
+      "id": "100000011",
       "status": true,
       "firstName": "Iman",
       "lastName": "Zahid",
@@ -119,51 +119,6 @@
       "salary": 11111111111111,
       "entryDate": "2024-07-07T19:00:00.000Z",
       "leaveDate": null
-    },
-    {
-      "id": 336469909,
-      "status": true,
-      "firstName": "Samina",
-      "lastName": "Zahid",
-      "phoneNumber": "003745622",
-      "email": "samina@gmail.com",
-      "department": {
-        "label": "IT",
-        "value": "IT"
-      },
-      "salary": 200000,
-      "entryDate": "2024-09-27T19:00:00.000Z",
-      "leaveDate": "-"
-    },
-    {
-      "id": 549682629,
-      "status": false,
-      "firstName": "Emily",
-      "lastName": "Ali",
-      "phoneNumber": "1234567",
-      "email": "iman@emily.com",
-      "department": {
-        "label": "Sales",
-        "value": "Sales"
-      },
-      "salary": 22000,
-      "entryDate": "2024-07-23T19:00:00.000Z",
-      "leaveDate": "2024-08-22T19:00:00.000Z"
-    },
-    {
-      "id": 809231648,
-      "status": true,
-      "firstName": "Roze",
-      "lastName": "Poze",
-      "phoneNumber": "05313913493",
-      "email": "imanzahidzahid3@gmail.com",
-      "department": {
-        "label": "IT",
-        "value": "IT"
-      },
-      "salary": 2222,
-      "entryDate": "2024-07-24T19:00:00.000Z",
-      "leaveDate": "-"
     }
   ]
 }

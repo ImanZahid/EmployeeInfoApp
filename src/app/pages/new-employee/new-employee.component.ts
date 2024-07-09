@@ -66,6 +66,9 @@ export class NewEmployeeComponent implements OnInit {
   onSubmit(): void {
     if (this.employeeForm.valid) {
       const formValue = { ...this.employeeForm.value };
+
+      formValue.department = this.employeeForm.value.department.value;
+
       if (!formValue.leaveDate) {
         formValue.leaveDate = '-';
       }

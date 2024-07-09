@@ -1,18 +1,6 @@
 {
   "employees": [
     {
-      "id": "100000001",
-      "status": true,
-      "firstName": "John",
-      "lastName": "Doe",
-      "phoneNumber": "1234567890",
-      "email": "john.doe@example.com",
-      "department": "HR",
-      "salary": 50000,
-      "entryDate": "2023-01-01",
-      "leaveDate": "-"
-    },
-    {
       "id": "100000003",
       "status": true,
       "firstName": "Michael",
@@ -61,64 +49,16 @@
       "leaveDate": "-"
     },
     {
-      "id": "100000007",
       "status": true,
       "firstName": "David",
-      "lastName": "Taylor",
+      "lastName": "Tayler",
       "phoneNumber": "7890123456",
       "email": "david.taylor@example.com",
-      "department": "Finance",
-      "salary": 58000,
-      "entryDate": "2023-07-01",
-      "leaveDate": "-"
-    },
-    {
-      "id": "100000008",
-      "status": true,
-      "firstName": "Laura",
-      "lastName": "Anderson",
-      "phoneNumber": "8901234567",
-      "email": "laura.anderson@example.com",
-      "department": "IT",
-      "salary": 70000,
-      "entryDate": "2023-08-01",
-      "leaveDate": "-"
-    },
-    {
-      "id": "100000009",
-      "status": true,
-      "firstName": "Daniel",
-      "lastName": "Thomas",
-      "phoneNumber": "9012345678",
-      "email": "daniel.thomas@example.com",
-      "department": "Marketing",
-      "salary": 53000,
-      "entryDate": "2023-09-01",
-      "leaveDate": "-"
-    },
-    {
-      "id": "100000010",
-      "status": true,
-      "firstName": "Sophia",
-      "lastName": "Jackson",
-      "phoneNumber": "0123456789",
-      "email": "sophia.jackson@example.com",
       "department": "Sales",
-      "salary": 62000,
-      "entryDate": "2023-10-01",
-      "leaveDate": "-"
-    },
-    {
-      "id": "100000011",
-      "status": true,
-      "firstName": "Iman",
-      "lastName": "Zahid",
-      "phoneNumber": "05313913493",
-      "email": "imanzahidzahid3@gmail.com",
-      "department": "Marketing",
-      "salary": 11111111111111,
-      "entryDate": "2024-07-07T19:00:00.000Z",
-      "leaveDate": null
+      "salary": 58000,
+      "entryDate": "2023-07-01T00:00:00.000Z",
+      "leaveDate": "-",
+      "id": "100000007"
     }
   ]
 }

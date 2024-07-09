@@ -17,7 +17,7 @@ export class EditEmployeeComponent implements OnInit {
     { label: 'Sales', value: Department.Sales },
     { label: 'Marketing', value: Department.Marketing },
   ];
-  employeeId!: number;
+  employeeId!: string;
 
   constructor(
     private fb: FormBuilder,
@@ -27,7 +27,7 @@ export class EditEmployeeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.employeeId = +this.route.snapshot.params['id'];
+    this.employeeId = this.route.snapshot.params['id'];
     this.initForm();
     this.loadEmployee();
   }
@@ -54,7 +54,7 @@ export class EditEmployeeComponent implements OnInit {
       ],
       phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       email: ['', [Validators.required, Validators.email]],
-      department: [Department.HR, Validators.required],
+      department: ['', Validators.required],
       salary: [null, Validators.required],
       entryDate: [null, Validators.required],
       leaveDate: [null],
@@ -84,6 +84,7 @@ export class EditEmployeeComponent implements OnInit {
           status: Boolean(employee.status), // Ensure status is a boolean
           entryDate: new Date(employee.entryDate),
           leaveDate: leaveDate,
+          department: employee.department, // Set department value correctly
         });
       },
       (error) => {
@@ -95,6 +96,9 @@ export class EditEmployeeComponent implements OnInit {
   onSubmit(): void {
     if (this.employeeForm.valid) {
       const formValue = { ...this.employeeForm.value, id: this.employeeId };
+
+      formValue.department = this.employeeForm.value.department.value;
+
       if (!formValue.leaveDate) {
         formValue.leaveDate = '-';
       }

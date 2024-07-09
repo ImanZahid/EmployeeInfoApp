@@ -56,7 +56,7 @@ export class ListComponent implements OnInit {
     this.router.navigate([`/employee/${employee.id}`]);
   }
 
-  onDeleteEmployee(id: number): void {
+  onDeleteEmployee(id: string): void {
     this.employeeService.deleteEmployee(id).subscribe(
       () => {
         this.getEmployees();
@@ -80,8 +80,23 @@ export class ListComponent implements OnInit {
     });
   }
 
+  updateSelectedEmployees(employee: Employee, checked: boolean): void {
+    if (checked) {
+      this.selectedEmployees.push(employee);
+    } else {
+      this.selectedEmployees = this.selectedEmployees.filter(
+        (e) => e.id !== employee.id
+      );
+    }
+  }
+
+  hasSelectedEmployees(): boolean {
+    return this.selectedEmployees.length > 0;
+  }
+
   toggleSelectAll(event: any): void {
-    this.employees.forEach((employee) => (employee.selected = event.checked));
-    this.selectedEmployees = event.checked ? [...this.employees] : [];
+    this.allChecked = event.checked;
+    this.selectedEmployees = this.allChecked ? [...this.employees] : [];
+    this.employees.forEach((employee) => (employee.selected = this.allChecked));
   }
 }

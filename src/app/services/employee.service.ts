@@ -17,18 +17,18 @@ export class EmployeeService {
       map((employees) =>
         employees.map((employee) => ({
           ...employee,
-          id: Number(employee.id), // Ensure ID is a number
+          id: String(employee.id), // Ensure ID is a string
         }))
       )
     );
   }
 
-  getEmployee(id: number): Observable<Employee> {
+  getEmployee(id: string): Observable<Employee> {
     const url = `${this.apiURL}/${id}`;
     return this.http.get<Employee>(url).pipe(
       map((employee) => ({
         ...employee,
-        id: Number(employee.id), // Ensure ID is a number
+        id: String(employee.id), // Ensure ID is a string
       }))
     );
   }
@@ -50,23 +50,23 @@ export class EmployeeService {
   }
 
   updateEmployee(employee: Employee): Observable<Employee> {
-    const URL = `${this.apiURL}/${employee.id}`;
+    const url = `${this.apiURL}/${employee.id}`;
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-type': 'application/json' }),
     };
-    return this.http.put<Employee>(URL, employee, httpOptions);
+    return this.http.put<Employee>(url, employee, httpOptions);
   }
 
-  deleteEmployee(id: number): Observable<Employee> {
-    const URL = `${this.apiURL}/${id}`;
-    return this.http.delete<Employee>(URL);
+  deleteEmployee(id: string): Observable<Employee> {
+    const url = `${this.apiURL}/${id}`;
+    return this.http.delete<Employee>(url);
   }
 
-  private generateUniqueId(employees: Employee[]): number {
-    let uniqueId: number;
-    const ids = employees.map((emp) => Number(emp.id));
+  private generateUniqueId(employees: Employee[]): string {
+    let uniqueId: string;
+    const ids = employees.map((emp) => String(emp.id));
     do {
-      uniqueId = Math.floor(100000000 + Math.random() * 900000000);
+      uniqueId = String(Math.floor(100000000 + Math.random() * 900000000));
     } while (ids.includes(uniqueId));
     return uniqueId;
   }

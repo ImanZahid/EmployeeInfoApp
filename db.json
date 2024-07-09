@@ -49,15 +49,14 @@
       "leaveDate": "-"
     },
     {
-      "status": true,
+      "status": false,
       "firstName": "David",
       "lastName": "Tayler",
       "phoneNumber": "7890123456",
       "email": "david.taylor@example.com",
-      "department": "Sales",
       "salary": 58000,
       "entryDate": "2023-07-01T00:00:00.000Z",
-      "leaveDate": "-",
+      "leaveDate": "2024-07-30T19:00:00.000Z",
       "id": "100000007"
     }
   ]

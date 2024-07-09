@@ -53,6 +53,7 @@ p-calendar {
 .card.flex.justify-content-end {
   justify-content: flex-end;
 }
+
 .switch-group {
   display: flex;
   align-items: center;

@@ -75,6 +75,7 @@
           formControlName="department"
           placeholder="Select a Department"
           optionLabel="label"
+          class="p-fluid"
         ></p-dropdown>
       </div>
       <div class="form-group">
@@ -86,6 +87,7 @@
         <p-calendar
           formControlName="entryDate"
           dateFormat="yy-mm-dd"
+          class="p-fluid"
         ></p-calendar>
       </div>
       <div class="form-group" *ngIf="!employeeForm.get('status')!.value">
@@ -93,6 +95,7 @@
         <p-calendar
           formControlName="leaveDate"
           dateFormat="yy-mm-dd"
+          class="p-fluid"
         ></p-calendar>
       </div>
       <div class="button-group">

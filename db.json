@@ -2,30 +2,6 @@
   "employees": [
     {
       "status": true,
-      "firstName": "Michael",
-      "lastName": "Brown",
-      "phoneNumber": "34567890122222",
-      "email": "michael.brown@example.com",
-      "department": "IT",
-      "salary": 75000,
-      "entryDate": "2023-03-01T00:00:00.000Z",
-      "leaveDate": "-",
-      "id": "100000003"
-    },
-    {
-      "id": "100000004",
-      "status": false,
-      "firstName": "Emily",
-      "lastName": "Davis",
-      "phoneNumber": "4567890123",
-      "email": "emily.davis@example.com",
-      "department": "Marketing",
-      "salary": 55000,
-      "entryDate": "2023-04-01",
-      "leaveDate": "2024-01-01"
-    },
-    {
-      "status": true,
       "firstName": "Christopher",
       "lastName": "Wilson",
       "phoneNumber": 222222222222,
@@ -37,28 +13,52 @@
       "id": "100000005"
     },
     {
-      "status": true,
-      "firstName": "Sarah",
-      "lastName": "Moore",
-      "phoneNumber": "6789012345",
-      "email": "sarah.moore@example.com",
-      "department": "Sales",
-      "salary": 52000,
-      "entryDate": "2023-06-01T00:00:00.000Z",
-      "leaveDate": "-",
-      "id": "100000006"
+      "id": "266308212",
+      "status": false,
+      "firstName": "Damon",
+      "lastName": "Ian",
+      "phoneNumber": "47465839",
+      "email": "Damon@ian.com",
+      "department": "IT",
+      "salary": 99999999,
+      "entryDate": "2024-07-26T19:00:00.000Z",
+      "leaveDate": "2029-09-27T19:00:00.000Z"
     },
     {
+      "id": "566730996",
+      "status": true,
+      "firstName": "Aaishah",
+      "lastName": "Raja",
+      "phoneNumber": "03358111645",
+      "email": "imanzahidzahid3@gmail.com",
+      "department": "Sales",
+      "salary": 333333,
+      "entryDate": "2024-07-25T19:00:00.000Z",
+      "leaveDate": "-"
+    },
+    {
+      "id": "434456851",
+      "status": true,
+      "firstName": "Sheryy",
+      "lastName": "Zahid",
+      "phoneNumber": "03358111645",
+      "email": "m.shehrozzahid76@gmail.com",
+      "department": "Sales",
+      "salary": 56443,
+      "entryDate": "2024-07-26T19:00:00.000Z",
+      "leaveDate": "-"
+    },
+    {
+      "id": "932474123",
       "status": false,
-      "firstName": "David",
-      "lastName": "Tayler",
-      "phoneNumber": "7890123456",
-      "email": "david.taylor@example.com",
-      "department": "HR",
-      "salary": 58000,
-      "entryDate": "2023-07-01T00:00:00.000Z",
-      "leaveDate": "2024-07-30T19:00:00.000Z",
-      "id": "100000007"
+      "firstName": "Shanza",
+      "lastName": "Zahid",
+      "phoneNumber": "03358111645",
+      "email": "m.shehrozzahid76@gmail.com",
+      "department": "Sales",
+      "salary": 66,
+      "entryDate": "2024-10-17T19:00:00.000Z",
+      "leaveDate": "2024-11-28T19:00:00.000Z"
     }
   ]
 }

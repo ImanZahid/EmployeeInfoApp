@@ -20,6 +20,8 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { CheckboxModule } from 'primeng/checkbox';
     CheckboxModule,
     BrowserAnimationsModule,
     InputSwitchModule,
+    ConfirmDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

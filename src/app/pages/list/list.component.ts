@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { EmployeeService } from '../../services/employee.service';
 import { Employee } from '../../models/employee.model';
 
@@ -7,6 +8,7 @@ import { Employee } from '../../models/employee.model';
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css'],
+  providers: [ConfirmationService, MessageService],
 })
 export class ListComponent implements OnInit {
   employees: Employee[] = [];
@@ -15,7 +17,9 @@ export class ListComponent implements OnInit {
 
   constructor(
     private employeeService: EmployeeService,
-    private router: Router
+    private router: Router,
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -56,28 +60,80 @@ export class ListComponent implements OnInit {
     this.router.navigate([`/employee/${employee.id}`]);
   }
 
+  confirmDelete(employee: Employee): void {
+    this.confirmationService.confirm({
+      message: 'Do you want to delete this record?',
+      header: 'Delete Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      acceptLabel: 'Yes',
+      rejectLabel: 'No',
+      acceptButtonStyleClass: 'p-button-text p-button-danger',
+      rejectButtonStyleClass: 'p-button-text p-button-secondary',
+      accept: () => {
+        this.onDeleteEmployee(employee.id);
+      },
+    });
+  }
+
+  confirmDeleteSelected(): void {
+    this.confirmationService.confirm({
+      message: 'Are you sure you want to delete the selected employees?',
+      header: 'Delete Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      acceptLabel: 'Yes',
+      rejectLabel: 'No',
+      acceptButtonStyleClass: 'p-button-text p-button-danger',
+      rejectButtonStyleClass: 'p-button-text p-button-secondary',
+      accept: () => {
+        this.onDeleteSelected();
+      },
+    });
+  }
+
   onDeleteEmployee(id: string): void {
     this.employeeService.deleteEmployee(id).subscribe(
       () => {
         this.getEmployees();
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Employee deleted successfully',
+        });
       },
       (error) => {
         console.error('Error deleting employee', error);
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Error deleting employee',
+        });
       }
     );
   }
 
   onDeleteSelected(): void {
-    this.selectedEmployees.forEach((employee) => {
-      this.employeeService.deleteEmployee(employee.id).subscribe(
-        () => {
-          this.getEmployees();
-        },
-        (error) => {
-          console.error('Error deleting employee', error);
-        }
-      );
-    });
+    const deleteRequests = this.selectedEmployees.map((employee) =>
+      this.employeeService.deleteEmployee(employee.id)
+    );
+
+    Promise.all(deleteRequests).then(
+      () => {
+        this.getEmployees();
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Selected employees deleted successfully',
+        });
+      },
+      (error) => {
+        console.error('Error deleting employees', error);
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Error deleting selected employees',
+        });
+      }
+    );
   }
 
   updateSelectedEmployees(employee: Employee, checked: boolean): void {

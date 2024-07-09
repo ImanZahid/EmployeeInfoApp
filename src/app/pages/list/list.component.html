@@ -13,7 +13,7 @@
     type="button"
     label="Delete Selected Rows"
     icon="pi pi-trash"
-    (click)="onDeleteSelected()"
+    (click)="confirmDeleteSelected()"
     [disabled]="!hasSelectedEmployees()"
     class="p-button-rounded p-button-danger"
   ></button>
@@ -100,11 +100,20 @@
             style="margin-right: 10px"
             >Edit</span
           >
-          <span class="action-link" (click)="onDeleteEmployee(employee.id)"
+          <span
+            class="action-link"
+            (click)="confirmDelete(employee)"
+            style="margin-right: 10px"
             >Delete</span
           >
         </td>
       </tr>
     </ng-template>
   </p-table>
+
+  <p-confirmDialog
+    header="Confirmation"
+    icon="pi pi-exclamation-triangle"
+  ></p-confirmDialog>
+  <p-toast></p-toast>
 </div>

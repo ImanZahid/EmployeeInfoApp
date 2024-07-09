@@ -25,12 +25,27 @@ export class ListComponent implements OnInit {
   getEmployees(): void {
     this.employeeService.getEmployees().subscribe(
       (data: Employee[]) => {
-        this.employees = data;
+        this.employees = data.map((employee) => ({
+          ...employee,
+          entryDate: this.formatDate(employee.entryDate),
+          leaveDate:
+            employee.leaveDate && employee.leaveDate !== '-'
+              ? this.formatDate(employee.leaveDate)
+              : null,
+        }));
       },
       (error) => {
         console.error('Error fetching employees', error);
       }
     );
+  }
+
+  formatDate(date: string): string {
+    const d = new Date(date);
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
   }
 
   onAddEmployee(): void {

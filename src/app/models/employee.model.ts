@@ -8,7 +8,7 @@ export interface Employee {
   department: Department;
   salary: number;
   entryDate: string;
-  leaveDate?: string; // making it optional
+  leaveDate?: string | null;
   selected?: boolean;
 }
 

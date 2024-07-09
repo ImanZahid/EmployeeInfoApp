@@ -54,7 +54,7 @@ export class EditEmployeeComponent implements OnInit {
       ],
       phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       email: ['', [Validators.required, Validators.email]],
-      department: ['', Validators.required],
+      department: [null, Validators.required],
       salary: [null, Validators.required],
       entryDate: [null, Validators.required],
       leaveDate: [null],
@@ -84,7 +84,10 @@ export class EditEmployeeComponent implements OnInit {
           status: Boolean(employee.status), // Ensure status is a boolean
           entryDate: new Date(employee.entryDate),
           leaveDate: leaveDate,
-          department: employee.department, // Set department value correctly
+          department:
+            this.departments.find(
+              (dept) => dept.value === employee.department
+            ) || null,
         });
       },
       (error) => {

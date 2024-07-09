@@ -1,16 +1,16 @@
 {
   "employees": [
     {
-      "id": "100000003",
       "status": true,
       "firstName": "Michael",
       "lastName": "Brown",
-      "phoneNumber": "3456789012",
+      "phoneNumber": "34567890122222",
       "email": "michael.brown@example.com",
       "department": "IT",
       "salary": 75000,
-      "entryDate": "2023-03-01",
-      "leaveDate": "-"
+      "entryDate": "2023-03-01T00:00:00.000Z",
+      "leaveDate": "-",
+      "id": "100000003"
     },
     {
       "id": "100000004",
@@ -25,28 +25,28 @@
       "leaveDate": "2024-01-01"
     },
     {
-      "id": "100000005",
       "status": true,
       "firstName": "Christopher",
       "lastName": "Wilson",
-      "phoneNumber": "5678901234",
+      "phoneNumber": 222222222222,
       "email": "christopher.wilson@example.com",
       "department": "Sales",
       "salary": 65000,
-      "entryDate": "2023-05-01",
-      "leaveDate": "-"
+      "entryDate": "2023-05-01T00:00:00.000Z",
+      "leaveDate": "-",
+      "id": "100000005"
     },
     {
-      "id": "100000006",
       "status": true,
       "firstName": "Sarah",
       "lastName": "Moore",
       "phoneNumber": "6789012345",
       "email": "sarah.moore@example.com",
-      "department": "HR",
+      "department": "Sales",
       "salary": 52000,
-      "entryDate": "2023-06-01",
-      "leaveDate": "-"
+      "entryDate": "2023-06-01T00:00:00.000Z",
+      "leaveDate": "-",
+      "id": "100000006"
     },
     {
       "status": false,
@@ -54,6 +54,7 @@
       "lastName": "Tayler",
       "phoneNumber": "7890123456",
       "email": "david.taylor@example.com",
+      "department": "HR",
       "salary": 58000,
       "entryDate": "2023-07-01T00:00:00.000Z",
       "leaveDate": "2024-07-30T19:00:00.000Z",

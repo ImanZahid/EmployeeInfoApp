@@ -25,18 +25,6 @@
       "leaveDate": "2024-11-28T19:00:00.000Z"
     },
     {
-      "id": "878703221",
-      "status": true,
-      "firstName": "Iman",
-      "lastName": "Zahid",
-      "phoneNumber": 5313913493,
-      "email": "imanzahidzahid3@gmail.com",
-      "department": "HR",
-      "salary": 22222,
-      "entryDate": "2024-07-10T19:00:00.000Z",
-      "leaveDate": "-"
-    },
-    {
       "id": "503441608",
       "status": true,
       "firstName": "Aria",

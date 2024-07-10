@@ -21,11 +21,13 @@ export class WelcomeComponent {
 
   continueAsEmployee(): void {
     sessionStorage.setItem('role', 'employee');
+    localStorage.setItem('employer', 'false');
     this.router.navigate(['/list']);
   }
 
   continueAsEmployer(): void {
     sessionStorage.setItem('role', 'employer');
+    localStorage.setItem('employer', 'true');
     this.router.navigate(['/list']);
   }
 

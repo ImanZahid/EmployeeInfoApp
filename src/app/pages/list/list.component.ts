@@ -202,6 +202,7 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   goBackToHome(): void {
+    localStorage.clear();
     this.router.navigate(['/welcome']);
   }
 }

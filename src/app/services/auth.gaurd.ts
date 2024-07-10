@@ -16,8 +16,8 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    const role = sessionStorage.getItem('role');
-    if (!role) {
+    const isEmployer = localStorage.getItem('employer') === 'true';
+    if (next.routeConfig?.path === 'new-employee' && !isEmployer) {
       this.router.navigate(['/welcome']);
       return false;
     }

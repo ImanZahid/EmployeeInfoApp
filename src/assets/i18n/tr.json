@@ -1,5 +1,5 @@
 {
-  "WELCOME": "Çalışan Listesi Uygulamasına Hoş Geldiniz",
+  "WELCOME": "Çalışan listesi uygulamasına hoş geldiniz",
   "CONTINUE_AS_EMPLOYEE": "Çalışan Olarak Devam Et",
   "CONTINUE_AS_EMPLOYER": "İşveren Olarak Devam Et",
   "EMPLOYEE_LIST": "Çalışan Listesi",
@@ -43,5 +43,6 @@
   "NO_PERMISSION_ADD": "Çalışan ekleme izniniz yok.",
   "NO_PERMISSION_DELETE": "Çalışan silme izniniz yok.",
   "OPERATION_COMPLETED_SUCCESSFULLY": "İşlem başarıyla tamamlandı",
-  "AN_ERROR_OCCURRED": "Bir hata oluştu"
+  "AN_ERROR_OCCURRED": "Bir hata oluştu",
+  "GO_BACK_TO_HOME": "Ana Sayfaya Dön"
 }

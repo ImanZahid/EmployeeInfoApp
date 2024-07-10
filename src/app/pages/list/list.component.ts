@@ -200,4 +200,8 @@ export class ListComponent implements OnInit, OnDestroy {
     this.selectedEmployees = this.allChecked ? [...this.employees] : [];
     this.employees.forEach((employee) => (employee.selected = this.allChecked));
   }
+
+  goBackToHome(): void {
+    this.router.navigate(['/welcome']);
+  }
 }

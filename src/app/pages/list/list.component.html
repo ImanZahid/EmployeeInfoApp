@@ -18,6 +18,14 @@
       [disabled]="!hasSelectedEmployees()"
       class="p-button-rounded p-button-danger"
     ></button>
+    <button
+      pButton
+      type="button"
+      label="{{ 'GO_BACK_TO_HOME' | translate }}"
+      icon="pi pi-home"
+      (click)="goBackToHome()"
+      class="p-button-rounded p-button-info"
+    ></button>
   </div>
 
   <p-table

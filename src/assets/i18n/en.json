@@ -1,5 +1,5 @@
 {
-  "WELCOME": "Welcome to Employee List Application",
+  "WELCOME": "Welcome to the employee list application",
   "CONTINUE_AS_EMPLOYEE": "Continue as Employee",
   "CONTINUE_AS_EMPLOYER": "Continue as Employer",
   "EMPLOYEE_LIST": "Employee List",
@@ -43,5 +43,6 @@
   "NO_PERMISSION_ADD": "You do not have permission to add employees.",
   "NO_PERMISSION_DELETE": "You do not have permission to delete employees.",
   "OPERATION_COMPLETED_SUCCESSFULLY": "Operation completed successfully",
-  "AN_ERROR_OCCURRED": "An error occurred"
+  "AN_ERROR_OCCURRED": "An error occurred",
+  "GO_BACK_TO_HOME": "Go back to Home"
 }

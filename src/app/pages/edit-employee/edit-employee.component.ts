@@ -110,7 +110,8 @@ export class EditEmployeeComponent implements OnInit, OnDestroy {
       );
   }
 
-  onSubmit(): void {
+  onSubmit(event: Event): void {
+    event.preventDefault();
     if (this.employeeForm.valid) {
       const formValue = { ...this.employeeForm.value, id: this.employeeId };
 
@@ -125,7 +126,8 @@ export class EditEmployeeComponent implements OnInit, OnDestroy {
     }
   }
 
-  onBack(): void {
+  onBack(event: Event): void {
+    event.preventDefault();
     this.router.navigate(['/list']);
   }
 }

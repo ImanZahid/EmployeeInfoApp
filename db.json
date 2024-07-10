@@ -95,6 +95,30 @@
       "entryDate": "2024-07-26T19:00:00.000Z",
       "leaveDate": "2024-08-30T19:00:00.000Z",
       "id": "403202337"
+    },
+    {
+      "id": "943238087",
+      "status": true,
+      "firstName": "Sana",
+      "lastName": "Anas",
+      "phoneNumber": 3334444444444,
+      "email": "imanzahidzahid3@gmail.com",
+      "department": "Sales",
+      "salary": 333333333,
+      "entryDate": "2024-07-18T19:00:00.000Z",
+      "leaveDate": "-"
+    },
+    {
+      "id": "122573212",
+      "status": true,
+      "firstName": "Iman",
+      "lastName": "Zahid",
+      "phoneNumber": 5313913493,
+      "email": "imanzahidzahid3@gmail.com",
+      "department": "Sales",
+      "salary": 444,
+      "entryDate": "2024-07-15T19:00:00.000Z",
+      "leaveDate": "-"
     }
   ]
 }

@@ -74,7 +74,8 @@ export class NewEmployeeComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 
-  onSubmit(): void {
+  onSubmit(event: Event): void {
+    event.preventDefault();
     if (this.employeeForm.valid) {
       const formValue = { ...this.employeeForm.value };
 
@@ -89,7 +90,8 @@ export class NewEmployeeComponent implements OnInit, OnDestroy {
     }
   }
 
-  onBack(): void {
+  onBack(event: Event): void {
+    event.preventDefault();
     this.router.navigate(['/list']);
   }
 }

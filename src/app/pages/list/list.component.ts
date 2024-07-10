@@ -18,6 +18,7 @@ export class ListComponent implements OnInit, OnDestroy {
   selectedEmployees: Employee[] = [];
   allChecked = false;
   private unsubscribe$ = new Subject<void>();
+  currentLanguage: string;
 
   constructor(
     private employeeService: EmployeeService,
@@ -26,7 +27,8 @@ export class ListComponent implements OnInit, OnDestroy {
     private messageService: MessageService,
     private translate: TranslateService
   ) {
-    this.translate.setDefaultLang('en');
+    this.currentLanguage = 'en';
+    this.translate.setDefaultLang(this.currentLanguage);
   }
 
   ngOnInit(): void {
@@ -38,8 +40,13 @@ export class ListComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 
-  switchLanguage(language: string): void {
-    this.translate.use(language);
+  switchLanguage(): void {
+    this.currentLanguage = this.currentLanguage === 'en' ? 'tr' : 'en';
+    this.translate.use(this.currentLanguage);
+  }
+
+  getLanguageButtonLabel(): string {
+    return this.currentLanguage === 'en' ? 'TR' : 'EN';
   }
 
   getEmployees(): void {

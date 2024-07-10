@@ -1,7 +1,7 @@
 <div class="container flex justify-content-center align-items-center">
   <div class="form-container">
     <h1>Edit Employee</h1>
-    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit($event)">
       <div class="switch-group">
         <label>Status</label>
         <p-inputSwitch formControlName="status"></p-inputSwitch>
@@ -105,7 +105,7 @@
             pRipple
             label="Back"
             class="p-button-secondary"
-            (click)="onBack()"
+            (click)="onBack($event)"
           ></button>
         </div>
         <div class="card flex justify-content-end">

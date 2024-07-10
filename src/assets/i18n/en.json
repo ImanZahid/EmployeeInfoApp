@@ -23,5 +23,17 @@
   "LAST_NAME_ERROR": "Last Name is required.",
   "PHONE_NUMBER_ERROR": "Phone Number is required.",
   "EMAIL_ERROR": "Email is required and must be a valid email address.",
-  "SELECT_DEPARTMENT": "Select a Department"
+  "SELECT_DEPARTMENT": "Select a Department",
+  "ACTIVE": "True",
+  "INACTIVE": "False",
+  "HR": "Human Resources",
+  "IT": "Information Technology",
+  "Sales": "Sales",
+  "Marketing": "Marketing",
+  "DELETE_CONFIRMATION": "Do you want to delete this record?",
+  "DELETE_SELECTED_CONFIRMATION": "Are you sure you want to delete the selected employees?",
+  "SUCCESS": "Success",
+  "EMPLOYEE_DELETED_SUCCESSFULLY": "Employee deleted successfully",
+  "ERROR_DELETING_EMPLOYEE": "Error deleting employee",
+  "ERROR_DELETING_SELECTED_EMPLOYEES": "Error deleting selected employees"
 }

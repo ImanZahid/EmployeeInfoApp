@@ -1,30 +1,6 @@
 {
   "employees": [
     {
-      "id": "266308212",
-      "status": false,
-      "firstName": "Damon",
-      "lastName": "Ian",
-      "phoneNumber": "47465839",
-      "email": "Damon@ian.com",
-      "department": "IT",
-      "salary": 99999999,
-      "entryDate": "2024-07-26T19:00:00.000Z",
-      "leaveDate": "2029-09-27T19:00:00.000Z"
-    },
-    {
-      "id": "566730996",
-      "status": true,
-      "firstName": "Aaishah",
-      "lastName": "Raja",
-      "phoneNumber": "03358111645",
-      "email": "imanzahidzahid3@gmail.com",
-      "department": "Sales",
-      "salary": 333333,
-      "entryDate": "2024-07-25T19:00:00.000Z",
-      "leaveDate": "-"
-    },
-    {
       "id": "434456851",
       "status": true,
       "firstName": "Sheryy",
@@ -121,7 +97,7 @@
       "id": "122573212"
     },
     {
-      "status": false,
+      "status": true,
       "firstName": "Osama",
       "lastName": "Tanveer",
       "phoneNumber": 39399339,

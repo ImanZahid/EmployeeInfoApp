@@ -72,13 +72,17 @@
             (onChange)="updateSelectedEmployees(employee, $event.checked)"
           ></p-checkbox>
         </td>
-        <td>{{ employee.status }}</td>
+        <td>
+          {{
+            employee.status ? ("ACTIVE" | translate) : ("INACTIVE" | translate)
+          }}
+        </td>
         <td>{{ employee.id }}</td>
         <td>{{ employee.firstName }}</td>
         <td>{{ employee.lastName }}</td>
         <td>{{ employee.phoneNumber }}</td>
         <td>{{ employee.email }}</td>
-        <td>{{ employee.department }}</td>
+        <td>{{ employee.department | translate }}</td>
         <td>{{ employee.salary | currency : "USD" }}</td>
         <td>{{ employee.entryDate }}</td>
         <td>{{ employee.leaveDate }}</td>

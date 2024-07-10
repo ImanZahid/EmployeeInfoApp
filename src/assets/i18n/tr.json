@@ -23,5 +23,17 @@
   "LAST_NAME_ERROR": "Soyad gereklidir.",
   "PHONE_NUMBER_ERROR": "Telefon Numarası gereklidir.",
   "EMAIL_ERROR": "E-posta gereklidir ve geçerli bir e-posta adresi olmalıdır.",
-  "SELECT_DEPARTMENT": "Bir Departman Seçin"
+  "SELECT_DEPARTMENT": "Bir Departman Seçin",
+  "ACTIVE": "Doğru",
+  "INACTIVE": "YANLIŞ",
+  "HR": "İnsan Kaynakları",
+  "IT": "Bilgi Teknolojisi",
+  "Sales": "Satış",
+  "Marketing": "Pazarlama",
+  "DELETE_CONFIRMATION": "Bu kaydı silmek istiyor musunuz?",
+  "DELETE_SELECTED_CONFIRMATION": "Seçilen çalışanları silmek istediğinizden emin misiniz?",
+  "SUCCESS": "Başarılı",
+  "EMPLOYEE_DELETED_SUCCESSFULLY": "Çalışan başarıyla silindi",
+  "ERROR_DELETING_EMPLOYEE": "Çalışan silinirken hata oluştu",
+  "ERROR_DELETING_SELECTED_EMPLOYEES": "Seçilen çalışanlar silinirken hata oluştu"
 }

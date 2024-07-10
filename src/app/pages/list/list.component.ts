@@ -93,8 +93,8 @@ export class ListComponent implements OnInit, OnDestroy {
 
   confirmDelete(employee: Employee): void {
     this.confirmationService.confirm({
-      message: this.translate.instant('Do you want to delete this record?'),
-      header: this.translate.instant('Delete Confirmation'),
+      message: this.translate.instant('DELETE_CONFIRMATION'),
+      header: this.translate.instant('CONFIRMATION'),
       icon: 'pi pi-exclamation-triangle',
       acceptLabel: this.translate.instant('Yes'),
       rejectLabel: this.translate.instant('No'),
@@ -108,10 +108,8 @@ export class ListComponent implements OnInit, OnDestroy {
 
   confirmDeleteSelected(): void {
     this.confirmationService.confirm({
-      message: this.translate.instant(
-        'Are you sure you want to delete the selected employees?'
-      ),
-      header: this.translate.instant('Delete Confirmation'),
+      message: this.translate.instant('DELETE_SELECTED_CONFIRMATION'),
+      header: this.translate.instant('CONFIRMATION'),
       icon: 'pi pi-exclamation-triangle',
       acceptLabel: this.translate.instant('Yes'),
       rejectLabel: this.translate.instant('No'),

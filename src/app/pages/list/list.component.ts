@@ -6,7 +6,6 @@ import { Employee } from '../../models/employee.model';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-list',
@@ -18,6 +17,7 @@ export class ListComponent implements OnInit, OnDestroy {
   employees: Employee[] = [];
   selectedEmployees: Employee[] = [];
   allChecked = false;
+  isEmployer = sessionStorage.getItem('role') === 'employer';
   private unsubscribe$ = new Subject<void>();
 
   constructor(
@@ -25,15 +25,8 @@ export class ListComponent implements OnInit, OnDestroy {
     private router: Router,
     private confirmationService: ConfirmationService,
     private messageService: MessageService,
-    private translate: TranslateService,
-    private languageService: LanguageService
-  ) {
-    this.languageService.currentLanguage$
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((language) => {
-        this.translate.use(language);
-      });
-  }
+    private translate: TranslateService
+  ) {}
 
   ngOnInit(): void {
     this.getEmployees();
@@ -42,16 +35,6 @@ export class ListComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
-  }
-
-  switchLanguage(): void {
-    const newLanguage =
-      this.languageService.getLanguage() === 'en' ? 'tr' : 'en';
-    this.languageService.setLanguage(newLanguage);
-  }
-
-  getLanguageButtonLabel(): string {
-    return this.languageService.getLanguage() === 'en' ? 'TR' : 'EN';
   }
 
   getEmployees(): void {
@@ -71,6 +54,11 @@ export class ListComponent implements OnInit, OnDestroy {
         },
         (error) => {
           console.error('Error fetching employees', error);
+          this.messageService.add({
+            severity: 'error',
+            summary: this.translate.instant('ERROR'),
+            detail: this.translate.instant('AN_ERROR_OCCURRED'),
+          });
         }
       );
   }
@@ -84,7 +72,15 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   onAddEmployee(): void {
-    this.router.navigate(['/new-employee']);
+    if (this.isEmployer) {
+      this.router.navigate(['/new-employee']);
+    } else {
+      this.messageService.add({
+        severity: 'error',
+        summary: this.translate.instant('ERROR'),
+        detail: this.translate.instant('NO_PERMISSION_ADD'),
+      });
+    }
   }
 
   onEditEmployee(employee: Employee): void {
@@ -92,33 +88,49 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   confirmDelete(employee: Employee): void {
-    this.confirmationService.confirm({
-      message: this.translate.instant('DELETE_CONFIRMATION'),
-      header: this.translate.instant('CONFIRMATION'),
-      icon: 'pi pi-exclamation-triangle',
-      acceptLabel: this.translate.instant('Yes'),
-      rejectLabel: this.translate.instant('No'),
-      acceptButtonStyleClass: 'p-button-text p-button-danger',
-      rejectButtonStyleClass: 'p-button-text p-button-secondary',
-      accept: () => {
-        this.onDeleteEmployee(employee.id);
-      },
-    });
+    if (this.isEmployer) {
+      this.confirmationService.confirm({
+        message: this.translate.instant('DELETE_CONFIRMATION'),
+        header: this.translate.instant('CONFIRMATION'),
+        icon: 'pi pi-exclamation-triangle',
+        acceptLabel: this.translate.instant('YES'),
+        rejectLabel: this.translate.instant('NO'),
+        acceptButtonStyleClass: 'p-button-text p-button-danger',
+        rejectButtonStyleClass: 'p-button-text p-button-secondary',
+        accept: () => {
+          this.onDeleteEmployee(employee.id);
+        },
+      });
+    } else {
+      this.messageService.add({
+        severity: 'error',
+        summary: this.translate.instant('ERROR'),
+        detail: this.translate.instant('NO_PERMISSION_DELETE'),
+      });
+    }
   }
 
   confirmDeleteSelected(): void {
-    this.confirmationService.confirm({
-      message: this.translate.instant('DELETE_SELECTED_CONFIRMATION'),
-      header: this.translate.instant('CONFIRMATION'),
-      icon: 'pi pi-exclamation-triangle',
-      acceptLabel: this.translate.instant('Yes'),
-      rejectLabel: this.translate.instant('No'),
-      acceptButtonStyleClass: 'p-button-text p-button-danger',
-      rejectButtonStyleClass: 'p-button-text p-button-secondary',
-      accept: () => {
-        this.onDeleteSelected();
-      },
-    });
+    if (this.isEmployer) {
+      this.confirmationService.confirm({
+        message: this.translate.instant('DELETE_SELECTED_CONFIRMATION'),
+        header: this.translate.instant('CONFIRMATION'),
+        icon: 'pi pi-exclamation-triangle',
+        acceptLabel: this.translate.instant('YES'),
+        rejectLabel: this.translate.instant('NO'),
+        acceptButtonStyleClass: 'p-button-text p-button-danger',
+        rejectButtonStyleClass: 'p-button-text p-button-secondary',
+        accept: () => {
+          this.onDeleteSelected();
+        },
+      });
+    } else {
+      this.messageService.add({
+        severity: 'error',
+        summary: this.translate.instant('ERROR'),
+        detail: this.translate.instant('NO_PERMISSION_DELETE'),
+      });
+    }
   }
 
   onDeleteEmployee(id: string): void {
@@ -127,16 +139,16 @@ export class ListComponent implements OnInit, OnDestroy {
         this.getEmployees();
         this.messageService.add({
           severity: 'success',
-          summary: this.translate.instant('Success'),
-          detail: this.translate.instant('Employee deleted successfully'),
+          summary: this.translate.instant('SUCCESS'),
+          detail: this.translate.instant('EMPLOYEE_DELETED_SUCCESSFULLY'),
         });
       },
       (error) => {
         console.error('Error deleting employee', error);
         this.messageService.add({
           severity: 'error',
-          summary: this.translate.instant('Error'),
-          detail: this.translate.instant('Error deleting employee'),
+          summary: this.translate.instant('ERROR'),
+          detail: this.translate.instant('ERROR_DELETING_EMPLOYEE'),
         });
       }
     );
@@ -152,9 +164,9 @@ export class ListComponent implements OnInit, OnDestroy {
         this.getEmployees();
         this.messageService.add({
           severity: 'success',
-          summary: this.translate.instant('Success'),
+          summary: this.translate.instant('SUCCESS'),
           detail: this.translate.instant(
-            'Selected employees deleted successfully'
+            'SELECTED_EMPLOYEES_DELETED_SUCCESSFULLY'
           ),
         });
       },
@@ -162,8 +174,8 @@ export class ListComponent implements OnInit, OnDestroy {
         console.error('Error deleting employees', error);
         this.messageService.add({
           severity: 'error',
-          summary: this.translate.instant('Error'),
-          detail: this.translate.instant('Error deleting selected employees'),
+          summary: this.translate.instant('ERROR'),
+          detail: this.translate.instant('ERROR_DELETING_SELECTED_EMPLOYEES'),
         });
       }
     );

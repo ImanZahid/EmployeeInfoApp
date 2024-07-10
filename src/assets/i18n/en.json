@@ -1,4 +1,7 @@
 {
+  "WELCOME": "Welcome to Employee List Application",
+  "CONTINUE_AS_EMPLOYEE": "Continue as Employee",
+  "CONTINUE_AS_EMPLOYER": "Continue as Employer",
   "EMPLOYEE_LIST": "Employee List",
   "ADD_NEW_EMPLOYEE": "Add New Employee",
   "DELETE_SELECTED_ROWS": "Delete Selected Rows",
@@ -35,5 +38,10 @@
   "SUCCESS": "Success",
   "EMPLOYEE_DELETED_SUCCESSFULLY": "Employee deleted successfully",
   "ERROR_DELETING_EMPLOYEE": "Error deleting employee",
-  "ERROR_DELETING_SELECTED_EMPLOYEES": "Error deleting selected employees"
+  "ERROR_DELETING_SELECTED_EMPLOYEES": "Error deleting selected employees",
+  "ERROR": "Error",
+  "NO_PERMISSION_ADD": "You do not have permission to add employees.",
+  "NO_PERMISSION_DELETE": "You do not have permission to delete employees.",
+  "OPERATION_COMPLETED_SUCCESSFULLY": "Operation completed successfully",
+  "AN_ERROR_OCCURRED": "An error occurred"
 }

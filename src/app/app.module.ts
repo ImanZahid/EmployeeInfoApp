@@ -29,6 +29,7 @@ import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastInterceptor } from './services/toast.interceptor';
+import { WelcomeComponent } from './pages/welcome/welcome.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -40,6 +41,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ListComponent,
     NewEmployeeComponent,
     EditEmployeeComponent,
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,

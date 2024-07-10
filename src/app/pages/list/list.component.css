@@ -10,6 +10,7 @@ h1 {
 
 .p-table {
   margin-top: 20px;
+  overflow-x: auto;
 }
 
 .p-button {
@@ -24,6 +25,65 @@ h1 {
 
 .action-link:hover {
   text-decoration: underline;
-
   color: #202122;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+  h1 {
+    font-size: 2.5em;
+  }
+
+  .p-table {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 992px) {
+  h1 {
+    font-size: 2em;
+  }
+
+  .p-table {
+    font-size: 0.8em;
+  }
+
+  .button-group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .p-button {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.8em;
+  }
+
+  .p-table {
+    font-size: 0.7em;
+  }
+}
+
+@media (max-width: 576px) {
+  h1 {
+    font-size: 1.5em;
+  }
+
+  .p-table {
+    font-size: 0.6em;
+  }
+
+  .button-group {
+    width: 100%;
+  }
+
+  .p-button {
+    width: 100%;
+    margin: 5px 0;
+  }
 }

@@ -1,0 +1,26 @@
+<div class="welcome-container">
+  <h1>{{ "WELCOME" | translate }}</h1>
+  <div class="button-group">
+    <button
+      pButton
+      type="button"
+      label="{{ 'CONTINUE_AS_EMPLOYEE' | translate }}"
+      class="p-button-primary"
+      (click)="continueAsEmployee()"
+    ></button>
+    <button
+      pButton
+      type="button"
+      label="{{ 'CONTINUE_AS_EMPLOYER' | translate }}"
+      class="p-button-success"
+      (click)="continueAsEmployer()"
+    ></button>
+    <button
+      pButton
+      type="button"
+      label="{{ getLanguageButtonLabel() }}"
+      class="p-button-info"
+      (click)="switchLanguage()"
+    ></button>
+  </div>
+</div>

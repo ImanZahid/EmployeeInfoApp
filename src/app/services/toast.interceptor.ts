@@ -10,10 +10,14 @@ import {
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { MessageService } from 'primeng/api';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class ToastInterceptor implements HttpInterceptor {
-  constructor(private messageService: MessageService) {}
+  constructor(
+    private messageService: MessageService,
+    private translate: TranslateService
+  ) {}
 
   intercept(
     req: HttpRequest<any>,
@@ -26,8 +30,10 @@ export class ToastInterceptor implements HttpInterceptor {
             if (event.status === 200 || event.status === 201) {
               this.messageService.add({
                 severity: 'success',
-                summary: 'Success',
-                detail: 'Operation completed successfully',
+                summary: this.translate.instant('SUCCESS'),
+                detail: this.translate.instant(
+                  'OPERATION_COMPLETED_SUCCESSFULLY'
+                ),
               });
             }
           }
@@ -35,8 +41,8 @@ export class ToastInterceptor implements HttpInterceptor {
         (error: HttpErrorResponse) => {
           this.messageService.add({
             severity: 'error',
-            summary: 'Error',
-            detail: 'An error occurred',
+            summary: this.translate.instant('ERROR'),
+            detail: this.translate.instant('AN_ERROR_OCCURRED'),
           });
         }
       )

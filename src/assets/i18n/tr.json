@@ -1,4 +1,7 @@
 {
+  "WELCOME": "Çalışan Listesi Uygulamasına Hoş Geldiniz",
+  "CONTINUE_AS_EMPLOYEE": "Çalışan Olarak Devam Et",
+  "CONTINUE_AS_EMPLOYER": "İşveren Olarak Devam Et",
   "EMPLOYEE_LIST": "Çalışan Listesi",
   "ADD_NEW_EMPLOYEE": "Yeni Çalışan Ekle",
   "DELETE_SELECTED_ROWS": "Seçilen Satırları Sil",
@@ -25,7 +28,7 @@
   "EMAIL_ERROR": "E-posta gereklidir ve geçerli bir e-posta adresi olmalıdır.",
   "SELECT_DEPARTMENT": "Bir Departman Seçin",
   "ACTIVE": "Doğru",
-  "INACTIVE": "YANLIŞ",
+  "INACTIVE": "Yanlış",
   "HR": "İnsan Kaynakları",
   "IT": "Bilgi Teknolojisi",
   "Sales": "Satış",
@@ -35,5 +38,10 @@
   "SUCCESS": "Başarılı",
   "EMPLOYEE_DELETED_SUCCESSFULLY": "Çalışan başarıyla silindi",
   "ERROR_DELETING_EMPLOYEE": "Çalışan silinirken hata oluştu",
-  "ERROR_DELETING_SELECTED_EMPLOYEES": "Seçilen çalışanlar silinirken hata oluştu"
+  "ERROR_DELETING_SELECTED_EMPLOYEES": "Seçilen çalışanlar silinirken hata oluştu",
+  "ERROR": "Hata",
+  "NO_PERMISSION_ADD": "Çalışan ekleme izniniz yok.",
+  "NO_PERMISSION_DELETE": "Çalışan silme izniniz yok.",
+  "OPERATION_COMPLETED_SUCCESSFULLY": "İşlem başarıyla tamamlandı",
+  "AN_ERROR_OCCURRED": "Bir hata oluştu"
 }

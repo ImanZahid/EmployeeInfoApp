@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EmployeeService } from '../../services/employee.service';
 import { Department } from '../../models/employee.model';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-new-employee',
   templateUrl: './new-employee.component.html',
   styleUrls: ['./new-employee.component.css'],
 })
-export class NewEmployeeComponent implements OnInit {
+export class NewEmployeeComponent implements OnInit, OnDestroy {
   employeeForm!: FormGroup;
   departments = [
     { label: 'HR', value: Department.HR },
@@ -17,6 +19,7 @@ export class NewEmployeeComponent implements OnInit {
     { label: 'Sales', value: Department.Sales },
     { label: 'Marketing', value: Department.Marketing },
   ];
+  private unsubscribe$ = new Subject<void>();
 
   constructor(
     private fb: FormBuilder,
@@ -51,16 +54,24 @@ export class NewEmployeeComponent implements OnInit {
       leaveDate: [null],
     });
 
-    this.employeeForm.get('status')!.valueChanges.subscribe((value) => {
-      if (value) {
-        this.employeeForm.get('leaveDate')!.clearValidators();
-      } else {
-        this.employeeForm
-          .get('leaveDate')!
-          .setValidators([Validators.required]);
-      }
-      this.employeeForm.get('leaveDate')!.updateValueAndValidity();
-    });
+    this.employeeForm
+      .get('status')!
+      .valueChanges.pipe(takeUntil(this.unsubscribe$))
+      .subscribe((value) => {
+        if (value) {
+          this.employeeForm.get('leaveDate')!.clearValidators();
+        } else {
+          this.employeeForm
+            .get('leaveDate')!
+            .setValidators([Validators.required]);
+        }
+        this.employeeForm.get('leaveDate')!.updateValueAndValidity();
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   onSubmit(): void {

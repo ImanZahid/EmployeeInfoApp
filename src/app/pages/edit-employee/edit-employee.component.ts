@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from '../../services/employee.service';
 import { Employee, Department } from '../../models/employee.model';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-edit-employee',
   templateUrl: './edit-employee.component.html',
   styleUrls: ['./edit-employee.component.css'],
 })
-export class EditEmployeeComponent implements OnInit {
+export class EditEmployeeComponent implements OnInit, OnDestroy {
   employeeForm!: FormGroup;
   departments = [
     { label: 'HR', value: Department.HR },
@@ -18,6 +20,7 @@ export class EditEmployeeComponent implements OnInit {
     { label: 'Marketing', value: Department.Marketing },
   ];
   employeeId!: string;
+  private unsubscribe$ = new Subject<void>();
 
   constructor(
     private fb: FormBuilder,
@@ -30,6 +33,11 @@ export class EditEmployeeComponent implements OnInit {
     this.employeeId = this.route.snapshot.params['id'];
     this.initForm();
     this.loadEmployee();
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   initForm(): void {
@@ -60,40 +68,46 @@ export class EditEmployeeComponent implements OnInit {
       leaveDate: [null],
     });
 
-    this.employeeForm.get('status')!.valueChanges.subscribe((value) => {
-      if (value) {
-        this.employeeForm.get('leaveDate')!.clearValidators();
-      } else {
-        this.employeeForm
-          .get('leaveDate')!
-          .setValidators([Validators.required]);
-      }
-      this.employeeForm.get('leaveDate')!.updateValueAndValidity();
-    });
+    this.employeeForm
+      .get('status')!
+      .valueChanges.pipe(takeUntil(this.unsubscribe$))
+      .subscribe((value) => {
+        if (value) {
+          this.employeeForm.get('leaveDate')!.clearValidators();
+        } else {
+          this.employeeForm
+            .get('leaveDate')!
+            .setValidators([Validators.required]);
+        }
+        this.employeeForm.get('leaveDate')!.updateValueAndValidity();
+      });
   }
 
   loadEmployee(): void {
-    this.employeeService.getEmployee(this.employeeId).subscribe(
-      (employee) => {
-        const leaveDate =
-          employee.leaveDate && employee.leaveDate !== '-'
-            ? new Date(employee.leaveDate)
-            : null;
-        this.employeeForm.patchValue({
-          ...employee,
-          status: Boolean(employee.status), // Ensure status is a boolean
-          entryDate: new Date(employee.entryDate),
-          leaveDate: leaveDate,
-          department:
-            this.departments.find(
-              (dept) => dept.value === employee.department
-            ) || null,
-        });
-      },
-      (error) => {
-        console.error('Error fetching employee', error);
-      }
-    );
+    this.employeeService
+      .getEmployee(this.employeeId)
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(
+        (employee) => {
+          const leaveDate =
+            employee.leaveDate && employee.leaveDate !== '-'
+              ? new Date(employee.leaveDate)
+              : null;
+          this.employeeForm.patchValue({
+            ...employee,
+            status: Boolean(employee.status),
+            entryDate: new Date(employee.entryDate),
+            leaveDate: leaveDate,
+            department:
+              this.departments.find(
+                (dept) => dept.value === employee.department
+              ) || null,
+          });
+        },
+        (error) => {
+          console.error('Error fetching employee', error);
+        }
+      );
   }
 
   onSubmit(): void {

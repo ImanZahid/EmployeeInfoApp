@@ -83,6 +83,18 @@
       "entryDate": "2024-07-26T19:00:00.000Z",
       "leaveDate": "-",
       "id": "419077486"
+    },
+    {
+      "status": false,
+      "firstName": "Miley",
+      "lastName": "Lana",
+      "phoneNumber": 5313913493,
+      "email": "imanzahidzahid3@gmail.com",
+      "department": "Marketing",
+      "salary": 444444,
+      "entryDate": "2024-07-26T19:00:00.000Z",
+      "leaveDate": "2024-08-30T19:00:00.000Z",
+      "id": "403202337"
     }
   ]
 }

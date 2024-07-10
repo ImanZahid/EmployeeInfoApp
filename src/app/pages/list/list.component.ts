@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { EmployeeService } from '../../services/employee.service';
 import { Employee } from '../../models/employee.model';
+import { TranslateService } from '@ngx-translate/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-list',
@@ -10,38 +13,54 @@ import { Employee } from '../../models/employee.model';
   styleUrls: ['./list.component.css'],
   providers: [ConfirmationService, MessageService],
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit, OnDestroy {
   employees: Employee[] = [];
   selectedEmployees: Employee[] = [];
   allChecked = false;
+  private unsubscribe$ = new Subject<void>();
 
   constructor(
     private employeeService: EmployeeService,
     private router: Router,
     private confirmationService: ConfirmationService,
-    private messageService: MessageService
-  ) {}
+    private messageService: MessageService,
+    private translate: TranslateService
+  ) {
+    this.translate.setDefaultLang('en');
+  }
 
   ngOnInit(): void {
     this.getEmployees();
   }
 
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
+
+  switchLanguage(language: string): void {
+    this.translate.use(language);
+  }
+
   getEmployees(): void {
-    this.employeeService.getEmployees().subscribe(
-      (data: Employee[]) => {
-        this.employees = data.map((employee) => ({
-          ...employee,
-          entryDate: this.formatDate(employee.entryDate),
-          leaveDate:
-            employee.leaveDate && employee.leaveDate !== '-'
-              ? this.formatDate(employee.leaveDate)
-              : null,
-        }));
-      },
-      (error) => {
-        console.error('Error fetching employees', error);
-      }
-    );
+    this.employeeService
+      .getEmployees()
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(
+        (data: Employee[]) => {
+          this.employees = data.map((employee) => ({
+            ...employee,
+            entryDate: this.formatDate(employee.entryDate),
+            leaveDate:
+              employee.leaveDate && employee.leaveDate !== '-'
+                ? this.formatDate(employee.leaveDate)
+                : null,
+          }));
+        },
+        (error) => {
+          console.error('Error fetching employees', error);
+        }
+      );
   }
 
   formatDate(date: string): string {
@@ -62,11 +81,11 @@ export class ListComponent implements OnInit {
 
   confirmDelete(employee: Employee): void {
     this.confirmationService.confirm({
-      message: 'Do you want to delete this record?',
-      header: 'Delete Confirmation',
+      message: this.translate.instant('Do you want to delete this record?'),
+      header: this.translate.instant('Delete Confirmation'),
       icon: 'pi pi-exclamation-triangle',
-      acceptLabel: 'Yes',
-      rejectLabel: 'No',
+      acceptLabel: this.translate.instant('Yes'),
+      rejectLabel: this.translate.instant('No'),
       acceptButtonStyleClass: 'p-button-text p-button-danger',
       rejectButtonStyleClass: 'p-button-text p-button-secondary',
       accept: () => {
@@ -77,11 +96,13 @@ export class ListComponent implements OnInit {
 
   confirmDeleteSelected(): void {
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete the selected employees?',
-      header: 'Delete Confirmation',
+      message: this.translate.instant(
+        'Are you sure you want to delete the selected employees?'
+      ),
+      header: this.translate.instant('Delete Confirmation'),
       icon: 'pi pi-exclamation-triangle',
-      acceptLabel: 'Yes',
-      rejectLabel: 'No',
+      acceptLabel: this.translate.instant('Yes'),
+      rejectLabel: this.translate.instant('No'),
       acceptButtonStyleClass: 'p-button-text p-button-danger',
       rejectButtonStyleClass: 'p-button-text p-button-secondary',
       accept: () => {
@@ -96,16 +117,16 @@ export class ListComponent implements OnInit {
         this.getEmployees();
         this.messageService.add({
           severity: 'success',
-          summary: 'Success',
-          detail: 'Employee deleted successfully',
+          summary: this.translate.instant('Success'),
+          detail: this.translate.instant('Employee deleted successfully'),
         });
       },
       (error) => {
         console.error('Error deleting employee', error);
         this.messageService.add({
           severity: 'error',
-          summary: 'Error',
-          detail: 'Error deleting employee',
+          summary: this.translate.instant('Error'),
+          detail: this.translate.instant('Error deleting employee'),
         });
       }
     );
@@ -121,16 +142,18 @@ export class ListComponent implements OnInit {
         this.getEmployees();
         this.messageService.add({
           severity: 'success',
-          summary: 'Success',
-          detail: 'Selected employees deleted successfully',
+          summary: this.translate.instant('Success'),
+          detail: this.translate.instant(
+            'Selected employees deleted successfully'
+          ),
         });
       },
       (error) => {
         console.error('Error deleting employees', error);
         this.messageService.add({
           severity: 'error',
-          summary: 'Error',
-          detail: 'Error deleting selected employees',
+          summary: this.translate.instant('Error'),
+          detail: this.translate.instant('Error deleting selected employees'),
         });
       }
     );

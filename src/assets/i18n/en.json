@@ -1,0 +1,22 @@
+{
+  "EMPLOYEE_LIST": "Employee List",
+  "ADD_NEW_EMPLOYEE": "Add New Employee",
+  "DELETE_SELECTED_ROWS": "Delete Selected Rows",
+  "STATUS": "Status",
+  "ID": "ID",
+  "FIRST_NAME": "First Name",
+  "LAST_NAME": "Last Name",
+  "PHONE_NUMBER": "Phone Number",
+  "EMAIL": "Email",
+  "DEPARTMENT": "Department",
+  "SALARY": "Salary",
+  "ENTRY_DATE": "Entry Date",
+  "LEAVE_DATE": "Leave Date",
+  "ACTIONS": "Actions",
+  "EDIT": "Edit",
+  "DELETE": "Delete",
+  "CONFIRMATION": "Confirmation",
+  "EDIT_EMPLOYEE": "Edit Employee",
+  "SAVE": "Save",
+  "BACK": "Back"
+}

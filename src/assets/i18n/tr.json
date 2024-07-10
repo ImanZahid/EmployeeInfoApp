@@ -18,5 +18,10 @@
   "CONFIRMATION": "Onay",
   "EDIT_EMPLOYEE": "Çalışanı Düzenle",
   "SAVE": "Kaydet",
-  "BACK": "Geri"
+  "BACK": "Geri",
+  "FIRST_NAME_ERROR": "Ad gereklidir.",
+  "LAST_NAME_ERROR": "Soyad gereklidir.",
+  "PHONE_NUMBER_ERROR": "Telefon Numarası gereklidir.",
+  "EMAIL_ERROR": "E-posta gereklidir ve geçerli bir e-posta adresi olmalıdır.",
+  "SELECT_DEPARTMENT": "Bir Departman Seçin"
 }

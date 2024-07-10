@@ -5,6 +5,8 @@ import { EmployeeService } from '../../services/employee.service';
 import { Department } from '../../models/employee.model';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { LanguageService } from '../../services/language.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-new-employee',
@@ -24,8 +26,16 @@ export class NewEmployeeComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private employeeService: EmployeeService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private languageService: LanguageService,
+    private translate: TranslateService
+  ) {
+    this.languageService.currentLanguage$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((language) => {
+        this.translate.use(language);
+      });
+  }
 
   ngOnInit(): void {
     this.employeeForm = this.fb.group({

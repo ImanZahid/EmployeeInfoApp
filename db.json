@@ -86,12 +86,12 @@
     },
     {
       "status": false,
-      "firstName": "Miley",
-      "lastName": "Lana",
+      "firstName": "Milly",
+      "lastName": "Lanaa",
       "phoneNumber": 5313913493,
       "email": "imanzahidzahid3@gmail.com",
       "department": "Marketing",
-      "salary": 444444,
+      "salary": 4444442222,
       "entryDate": "2024-07-26T19:00:00.000Z",
       "leaveDate": "2024-08-30T19:00:00.000Z",
       "id": "403202337"
@@ -109,8 +109,7 @@
       "leaveDate": "-"
     },
     {
-      "id": "122573212",
-      "status": true,
+      "status": false,
       "firstName": "Iman",
       "lastName": "Zahid",
       "phoneNumber": 5313913493,
@@ -118,7 +117,20 @@
       "department": "Sales",
       "salary": 444,
       "entryDate": "2024-07-15T19:00:00.000Z",
-      "leaveDate": "-"
+      "leaveDate": "2024-07-25T19:00:00.000Z",
+      "id": "122573212"
+    },
+    {
+      "status": false,
+      "firstName": "Osama",
+      "lastName": "Tanveer",
+      "phoneNumber": 39399339,
+      "email": "osama@iman.com",
+      "department": "IT",
+      "salary": 3333333333,
+      "entryDate": "2024-07-26T19:00:00.000Z",
+      "leaveDate": "2024-09-27T19:00:00.000Z",
+      "id": "853721287"
     }
   ]
 }

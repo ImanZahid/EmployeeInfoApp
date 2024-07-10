@@ -6,6 +6,7 @@ import { Employee } from '../../models/employee.model';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-list',
@@ -18,17 +19,20 @@ export class ListComponent implements OnInit, OnDestroy {
   selectedEmployees: Employee[] = [];
   allChecked = false;
   private unsubscribe$ = new Subject<void>();
-  currentLanguage: string;
 
   constructor(
     private employeeService: EmployeeService,
     private router: Router,
     private confirmationService: ConfirmationService,
     private messageService: MessageService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private languageService: LanguageService
   ) {
-    this.currentLanguage = 'en';
-    this.translate.setDefaultLang(this.currentLanguage);
+    this.languageService.currentLanguage$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((language) => {
+        this.translate.use(language);
+      });
   }
 
   ngOnInit(): void {
@@ -41,12 +45,13 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   switchLanguage(): void {
-    this.currentLanguage = this.currentLanguage === 'en' ? 'tr' : 'en';
-    this.translate.use(this.currentLanguage);
+    const newLanguage =
+      this.languageService.getLanguage() === 'en' ? 'tr' : 'en';
+    this.languageService.setLanguage(newLanguage);
   }
 
   getLanguageButtonLabel(): string {
-    return this.currentLanguage === 'en' ? 'TR' : 'EN';
+    return this.languageService.getLanguage() === 'en' ? 'TR' : 'EN';
   }
 
   getEmployees(): void {

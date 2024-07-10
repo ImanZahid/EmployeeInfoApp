@@ -18,5 +18,10 @@
   "CONFIRMATION": "Confirmation",
   "EDIT_EMPLOYEE": "Edit Employee",
   "SAVE": "Save",
-  "BACK": "Back"
+  "BACK": "Back",
+  "FIRST_NAME_ERROR": "First Name is required.",
+  "LAST_NAME_ERROR": "Last Name is required.",
+  "PHONE_NUMBER_ERROR": "Phone Number is required.",
+  "EMAIL_ERROR": "Email is required and must be a valid email address.",
+  "SELECT_DEPARTMENT": "Select a Department"
 }

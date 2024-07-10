@@ -1,13 +1,13 @@
 <div class="container flex justify-content-center align-items-center">
   <div class="form-container">
-    <h1>Add New Employee</h1>
+    <h1>{{ "ADD_NEW_EMPLOYEE" | translate }}</h1>
     <form [formGroup]="employeeForm" (ngSubmit)="onSubmit($event)">
       <div class="switch-group">
-        <label>Status</label>
+        <label>{{ "STATUS" | translate }}</label>
         <p-inputSwitch formControlName="status"></p-inputSwitch>
       </div>
       <div class="form-group">
-        <label>First Name</label>
+        <label>{{ "FIRST_NAME" | translate }}</label>
         <input type="text" pInputText formControlName="firstName" />
         <div
           *ngIf="
@@ -15,11 +15,11 @@
             employeeForm.get('firstName')!.touched
           "
         >
-          <small class="p-error">First Name is required characters.</small>
+          <small class="p-error">{{ "FIRST_NAME_ERROR" | translate }}</small>
         </div>
       </div>
       <div class="form-group">
-        <label>Last Name</label>
+        <label>{{ "LAST_NAME" | translate }}</label>
         <input type="text" pInputText formControlName="lastName" />
         <div
           *ngIf="
@@ -27,11 +27,11 @@
             employeeForm.get('lastName')!.touched
           "
         >
-          <small class="p-error">Last Name is required characters.</small>
+          <small class="p-error">{{ "LAST_NAME_ERROR" | translate }}</small>
         </div>
       </div>
       <div class="form-group">
-        <label>Phone Number</label>
+        <label>{{ "PHONE_NUMBER" | translate }}</label>
         <input type="number" pInputText formControlName="phoneNumber" />
         <div
           *ngIf="
@@ -39,11 +39,11 @@
             employeeForm.get('phoneNumber')!.touched
           "
         >
-          <small class="p-error">Phone Number is required</small>
+          <small class="p-error">{{ "PHONE_NUMBER_ERROR" | translate }}</small>
         </div>
       </div>
       <div class="form-group">
-        <label>Email</label>
+        <label>{{ "EMAIL" | translate }}</label>
         <input type="email" pInputText formControlName="email" />
         <div
           *ngIf="
@@ -51,25 +51,25 @@
             employeeForm.get('email')!.touched
           "
         >
-          <small class="p-error">Email is required</small>
+          <small class="p-error">{{ "EMAIL_ERROR" | translate }}</small>
         </div>
       </div>
       <div class="form-group">
-        <label>Department</label>
+        <label>{{ "DEPARTMENT" | translate }}</label>
         <p-dropdown
           [options]="departments"
           formControlName="department"
-          placeholder="Select a Department"
+          placeholder="{{ 'SELECT_DEPARTMENT' | translate }}"
           optionLabel="label"
           [style]="{ width: '100%' }"
         ></p-dropdown>
       </div>
       <div class="form-group">
-        <label>Salary</label>
+        <label>{{ "SALARY" | translate }}</label>
         <input type="number" pInputText formControlName="salary" />
       </div>
       <div class="form-group">
-        <label>Entry Date</label>
+        <label>{{ "ENTRY_DATE" | translate }}</label>
         <p-calendar
           formControlName="entryDate"
           dateFormat="yy-mm-dd"
@@ -77,7 +77,7 @@
         ></p-calendar>
       </div>
       <div class="form-group" *ngIf="!employeeForm.get('status')!.value">
-        <label>Leave Date</label>
+        <label>{{ "LEAVE_DATE" | translate }}</label>
         <p-calendar
           formControlName="leaveDate"
           dateFormat="yy-mm-dd"
@@ -89,7 +89,7 @@
           <button
             pButton
             pRipple
-            label="Back"
+            [label]="'BACK' | translate"
             class="p-button-secondary"
             (click)="onBack($event)"
           ></button>
@@ -98,7 +98,7 @@
           <button
             pButton
             pRipple
-            label="Save"
+            [label]="'SAVE' | translate"
             class="p-button-success"
             [disabled]="employeeForm.invalid"
           ></button>

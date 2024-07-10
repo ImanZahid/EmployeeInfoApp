@@ -5,6 +5,8 @@ import { EmployeeService } from '../../services/employee.service';
 import { Employee, Department } from '../../models/employee.model';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { LanguageService } from '../../services/language.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-edit-employee',
@@ -26,8 +28,16 @@ export class EditEmployeeComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private employeeService: EmployeeService,
     private route: ActivatedRoute,
-    private router: Router
-  ) {}
+    private router: Router,
+    private languageService: LanguageService,
+    private translate: TranslateService
+  ) {
+    this.languageService.currentLanguage$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((language) => {
+        this.translate.use(language);
+      });
+  }
 
   ngOnInit(): void {
     this.employeeId = this.route.snapshot.params['id'];

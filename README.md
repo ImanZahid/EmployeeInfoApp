@@ -1,6 +1,5 @@
 # EmployeeInfoApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.7.
 
 ## Project Overview
 
@@ -62,18 +61,17 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   - ID field is displayed but not editable (disabled)
 
 ### Tasks done:
-- **Interface:** Implement interface files for clean TypeScript structure
-- **CRUD Operations:** Implement service files for CRUD operations (GET, POST, etc.)
-- **ID Generation:** Generate a unique 9-digit ID automatically and check for uniqueness
-- **Styling:** Use PrimeNG components for all styling needs
-- **Backend:** Use JSON Server as the backend to handle requests
-- **Toast Messages:** Implement success and error toast messages for save, edit, and delete actions
-- **Form Validation:** Display error messages on inputs if the forms are invalid
-- **Language Support:** Implement dynamic language support using `en.json` and `tr.json` with a translate feature
-- **Additional Improvements:**
-  - Implement route guards to enhance Angular skills
-  - Implement interceptors for adding toast messages
-
+- [x] Interface: Implement interface files for clean TypeScript structure
+- [x] CRUD Operations: Implement service files for CRUD operations (GET, POST, etc.)
+- [x] ID Generation: Generate a unique 9-digit ID automatically and check for uniqueness
+- [x] Styling: Use PrimeNG components for all styling needs
+- [x] Backend: Use JSON Server as the backend to handle requests
+- [x] Toast Messages: Implement success and error toast messages for save, edit, and delete actions
+- [x] Form Validation: Display error messages on inputs if the forms are invalid
+- [x] Language Support: Implement dynamic language support using `en.json` and `tr.json` with a translate feature
+- [x] Additional Improvements:
+  - [x] Implement route guards to enhance Angular skills
+  - [x] Implement interceptors for adding toast messages
 
 ## Development server
 

@@ -61,7 +61,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   - Same form as the Add Employee Page
   - ID field is displayed but not editable (disabled)
 
-### To-Do List
+### Tasks done:
 - **Interface:** Implement interface files for clean TypeScript structure
 - **CRUD Operations:** Implement service files for CRUD operations (GET, POST, etc.)
 - **ID Generation:** Generate a unique 9-digit ID automatically and check for uniqueness
@@ -80,7 +80,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 ## JSON Server
 
-Run the following command to start JSON Server:
+Run `npx json-server --watch db.json --port 3000` command to start JSON Server:
 
 # EmployeeInfoApp
 

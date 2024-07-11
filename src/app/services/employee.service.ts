@@ -49,6 +49,7 @@ export class EmployeeService {
 
   deleteEmployee(id: string): Observable<Employee> {
     const url = `${this.apiURL}/${id}`;
+    // console.log(`Deleting employee with id: ${id}`);
     return this.http.delete<Employee>(url);
   }
 

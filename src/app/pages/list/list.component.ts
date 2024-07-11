@@ -51,6 +51,7 @@ export class ListComponent implements OnInit, OnDestroy {
                 ? this.formatDate(employee.leaveDate)
                 : null,
           }));
+          // console.log('Updated employee list:', this.employees);
         },
         (error) => {
           console.error('Error fetching employees', error);
@@ -156,11 +157,13 @@ export class ListComponent implements OnInit, OnDestroy {
 
   onDeleteSelected(): void {
     const deleteRequests = this.selectedEmployees.map((employee) =>
-      this.employeeService.deleteEmployee(employee.id)
+      this.employeeService.deleteEmployee(employee.id).toPromise()
     );
+    // console.log(deleteRequests);
 
-    Promise.all(deleteRequests).then(
-      () => {
+    Promise.all(deleteRequests)
+      .then(() => {
+        // console.log('All employees deleted');
         this.getEmployees();
         this.messageService.add({
           severity: 'success',
@@ -169,16 +172,15 @@ export class ListComponent implements OnInit, OnDestroy {
             'SELECTED_EMPLOYEES_DELETED_SUCCESSFULLY'
           ),
         });
-      },
-      (error) => {
+      })
+      .catch((error) => {
         console.error('Error deleting employees', error);
         this.messageService.add({
           severity: 'error',
           summary: this.translate.instant('ERROR'),
           detail: this.translate.instant('ERROR_DELETING_SELECTED_EMPLOYEES'),
         });
-      }
-    );
+      });
   }
 
   updateSelectedEmployees(employee: Employee, checked: boolean): void {
@@ -199,6 +201,7 @@ export class ListComponent implements OnInit, OnDestroy {
     this.allChecked = event.checked;
     this.selectedEmployees = this.allChecked ? [...this.employees] : [];
     this.employees.forEach((employee) => (employee.selected = this.allChecked));
+    console.log(this.selectedEmployees);
   }
 
   goBackToHome(): void {

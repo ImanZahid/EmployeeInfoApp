@@ -12,25 +12,15 @@ export class EmployeeService {
 
   constructor(private http: HttpClient) {}
 
+  //Get all employees
   getEmployees(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(this.apiURL).pipe(
-      map((employees) =>
-        employees.map((employee) => ({
-          ...employee,
-          id: String(employee.id), // Ensure ID is a string
-        }))
-      )
-    );
+    return this.http.get<Employee[]>(this.apiURL);
   }
 
+  //Get an employee
   getEmployee(id: string): Observable<Employee> {
     const url = `${this.apiURL}/${id}`;
-    return this.http.get<Employee>(url).pipe(
-      map((employee) => ({
-        ...employee,
-        id: String(employee.id), // Ensure ID is a string
-      }))
-    );
+    return this.http.get<Employee>(url);
   }
 
   addEmployee(employee: Employee): Observable<Employee> {

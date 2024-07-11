@@ -85,7 +85,7 @@
       "id": "122573212"
     },
     {
-      "status": true,
+      "status": false,
       "firstName": "Osama",
       "lastName": "Tanveer",
       "phoneNumber": 39399339,
@@ -93,7 +93,7 @@
       "department": "HR",
       "salary": 3333333333,
       "entryDate": "2024-07-26T19:00:00.000Z",
-      "leaveDate": "2024-09-27T19:00:00.000Z",
+      "leaveDate": "2029-12-28T19:00:00.000Z",
       "id": "853721287"
     }
   ]

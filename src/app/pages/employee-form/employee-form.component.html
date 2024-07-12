@@ -1,10 +1,16 @@
 <div class="container flex justify-content-center align-items-center">
   <div class="form-container">
-    <h1>{{ "ADD_NEW_EMPLOYEE" | translate }}</h1>
+    <h1>
+      {{ isEditMode ? "EDIT_EMPLOYEE" : ("ADD_NEW_EMPLOYEE" | translate) }}
+    </h1>
     <form [formGroup]="employeeForm" (ngSubmit)="onSubmit($event)">
       <div class="switch-group">
         <label>{{ "STATUS" | translate }}</label>
         <p-inputSwitch formControlName="status"></p-inputSwitch>
+      </div>
+      <div class="form-group" *ngIf="isEditMode">
+        <label>{{ "ID" | translate }}</label>
+        <input type="number" pInputText formControlName="id" />
       </div>
       <div class="form-group">
         <label>{{ "FIRST_NAME" | translate }}</label>
@@ -61,7 +67,7 @@
           formControlName="department"
           placeholder="{{ 'SELECT_DEPARTMENT' | translate }}"
           optionLabel="label"
-          [style]="{ width: '100%' }"
+          class="p-fluid"
         ></p-dropdown>
       </div>
       <div class="form-group">
@@ -73,7 +79,7 @@
         <p-calendar
           formControlName="entryDate"
           dateFormat="yy-mm-dd"
-          [style]="{ width: '100%' }"
+          class="p-fluid"
         ></p-calendar>
       </div>
       <div class="form-group" *ngIf="!employeeForm.get('status')!.value">
@@ -81,7 +87,7 @@
         <p-calendar
           formControlName="leaveDate"
           dateFormat="yy-mm-dd"
-          [style]="{ width: '100%' }"
+          class="p-fluid"
         ></p-calendar>
       </div>
       <div class="button-group">
@@ -89,7 +95,7 @@
           <button
             pButton
             pRipple
-            [label]="'BACK' | translate"
+            label="{{ 'BACK' | translate }}"
             class="p-button-secondary"
             (click)="onBack($event)"
           ></button>
@@ -98,7 +104,7 @@
           <button
             pButton
             pRipple
-            [label]="'SAVE' | translate"
+            label="{{ 'SAVE' | translate }}"
             class="p-button-success"
             [disabled]="employeeForm.invalid"
           ></button>

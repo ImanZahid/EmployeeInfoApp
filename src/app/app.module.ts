@@ -14,8 +14,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppComponent } from './app.component';
 import { ListComponent } from './pages/list/list.component';
-import { NewEmployeeComponent } from './pages/new-employee/new-employee.component';
-import { EditEmployeeComponent } from './pages/edit-employee/edit-employee.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { TableModule } from 'primeng/table';
@@ -31,6 +29,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { TooltipModule } from 'primeng/tooltip';
 import { ToastInterceptor } from './services/toast.interceptor';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { EmployeeFormComponent } from './pages/employee-form/employee-form.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -40,9 +39,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     ListComponent,
-    NewEmployeeComponent,
-    EditEmployeeComponent,
     WelcomeComponent,
+    EmployeeFormComponent,
   ],
   imports: [
     BrowserModule,

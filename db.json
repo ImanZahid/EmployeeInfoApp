@@ -47,6 +47,30 @@
       "salary": 5555,
       "entryDate": "2024-07-30T19:00:00.000Z",
       "leaveDate": "-"
+    },
+    {
+      "status": true,
+      "firstName": "Osama",
+      "lastName": "Tanveer",
+      "phoneNumber": 5313913493,
+      "email": "imanzahidzahid3@gmail.com",
+      "department": "Marketing",
+      "salary": 222200,
+      "entryDate": "2024-07-26T19:00:00.000Z",
+      "leaveDate": "-",
+      "id": "661948233"
+    },
+    {
+      "status": false,
+      "firstName": "Kim",
+      "lastName": "Kardashian",
+      "phoneNumber": 111244622,
+      "email": "kim@skim.com",
+      "department": "Sales",
+      "salary": 0,
+      "entryDate": "2024-07-30T19:00:00.000Z",
+      "leaveDate": "2027-12-30T19:00:00.000Z",
+      "id": "415677034"
     }
   ]
 }

@@ -1,19 +1,19 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from '../../services/employee.service';
-import { Department } from '../../models/employee.model';
+import { Employee, Department } from '../../models/employee.model';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { LanguageService } from '../../services/language.service';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-new-employee',
-  templateUrl: './new-employee.component.html',
-  styleUrls: ['./new-employee.component.css'],
+  selector: 'app-employee-form',
+  templateUrl: './employee-form.component.html',
+  styleUrls: ['./employee-form.component.css'],
 })
-export class NewEmployeeComponent implements OnInit, OnDestroy {
+export class EmployeeFormComponent implements OnInit, OnDestroy {
   employeeForm!: FormGroup;
   departments = [
     { label: 'HR', value: Department.HR },
@@ -21,11 +21,14 @@ export class NewEmployeeComponent implements OnInit, OnDestroy {
     { label: 'Sales', value: Department.Sales },
     { label: 'Marketing', value: Department.Marketing },
   ];
+  employeeId!: string;
+  isEditMode = false;
   private unsubscribe$ = new Subject<void>();
 
   constructor(
     private fb: FormBuilder,
     private employeeService: EmployeeService,
+    private route: ActivatedRoute,
     private router: Router,
     private languageService: LanguageService,
     private translate: TranslateService
@@ -38,8 +41,23 @@ export class NewEmployeeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.employeeId = this.route.snapshot.params['id'];
+    this.isEditMode = !!this.employeeId;
+    this.initForm();
+    if (this.isEditMode) {
+      this.loadAndSetEmployee();
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
+
+  initForm(): void {
     this.employeeForm = this.fb.group({
-      status: [true],
+      id: [{ value: '', disabled: true }],
+      status: [true, Validators.required],
       firstName: [
         '',
         [
@@ -58,7 +76,7 @@ export class NewEmployeeComponent implements OnInit, OnDestroy {
       ],
       phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       email: ['', [Validators.required, Validators.email]],
-      department: [Department.HR, Validators.required],
+      department: [null, Validators.required],
       salary: [null, Validators.required],
       entryDate: [null, Validators.required],
       leaveDate: [null],
@@ -79,24 +97,52 @@ export class NewEmployeeComponent implements OnInit, OnDestroy {
       });
   }
 
-  ngOnDestroy(): void {
-    this.unsubscribe$.next();
-    this.unsubscribe$.complete();
+  loadAndSetEmployee(): void {
+    this.employeeService
+      .getEmployee(this.employeeId)
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(
+        (employee) => {
+          const leaveDate =
+            employee.leaveDate && employee.leaveDate !== '-'
+              ? new Date(employee.leaveDate)
+              : null;
+          this.employeeForm.patchValue({
+            ...employee,
+            status: Boolean(employee.status),
+            entryDate: new Date(employee.entryDate),
+            leaveDate: leaveDate,
+            department:
+              this.departments.find(
+                (dept) => dept.value === employee.department
+              ) || null,
+          });
+        },
+        (error) => {
+          console.error('Error fetching employee', error);
+        }
+      );
   }
 
   onSubmit(event: Event): void {
     event.preventDefault();
     if (this.employeeForm.valid) {
-      const formValue = { ...this.employeeForm.value };
+      const formValue = { ...this.employeeForm.value, id: this.employeeId };
 
       formValue.department = this.employeeForm.value.department.value;
 
       if (!formValue.leaveDate) {
         formValue.leaveDate = '-';
       }
-      this.employeeService.addEmployee(formValue).subscribe(() => {
-        this.router.navigate(['/list']);
-      });
+      if (this.isEditMode) {
+        this.employeeService.updateEmployee(formValue).subscribe(() => {
+          this.router.navigate(['/list']);
+        });
+      } else {
+        this.employeeService.addEmployee(formValue).subscribe(() => {
+          this.router.navigate(['/list']);
+        });
+      }
     }
   }
 

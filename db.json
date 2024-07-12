@@ -1,58 +1,10 @@
 {
   "employees": [
     {
-      "id": "821411436",
-      "status": true,
-      "firstName": "Iman",
-      "lastName": "Zahid",
-      "phoneNumber": 3358111645,
-      "email": "m.shehrozzahid76@gmail.com",
-      "department": "IT",
-      "salary": 90000000,
-      "entryDate": "2024-07-03T19:00:00.000Z",
-      "leaveDate": "-"
-    },
-    {
-      "id": "654530732",
-      "status": false,
-      "firstName": "Lady",
-      "lastName": "Gaga",
-      "phoneNumber": 10101011,
-      "email": "Ladygaga@yahoo.com",
-      "department": "Marketing",
-      "salary": 22222222,
-      "entryDate": "2024-07-17T19:00:00.000Z",
-      "leaveDate": "2024-11-22T19:00:00.000Z"
-    },
-    {
-      "status": false,
-      "firstName": "Iman",
-      "lastName": "Zahid",
-      "phoneNumber": 3358111645,
-      "email": "m.shehrozzahid76@gmail.com",
-      "department": "Marketing",
-      "salary": 333333,
-      "entryDate": "2024-07-30T19:00:00.000Z",
-      "leaveDate": "2024-07-30T19:00:00.000Z",
-      "id": "794815730"
-    },
-    {
-      "id": "806655356",
-      "status": true,
-      "firstName": "Aaishah",
-      "lastName": "Raja",
-      "phoneNumber": 3358111645,
-      "email": "imanzahidzahid3@gmail.com",
-      "department": "Marketing",
-      "salary": 5555,
-      "entryDate": "2024-07-30T19:00:00.000Z",
-      "leaveDate": "-"
-    },
-    {
       "status": true,
       "firstName": "Osama",
       "lastName": "Tanveer",
-      "phoneNumber": 5313913493,
+      "phoneNumber": 5313913493333,
       "email": "imanzahidzahid3@gmail.com",
       "department": "Marketing",
       "salary": 222200,
@@ -71,6 +23,66 @@
       "entryDate": "2024-07-30T19:00:00.000Z",
       "leaveDate": "2027-12-30T19:00:00.000Z",
       "id": "415677034"
+    },
+    {
+      "id": "537292304",
+      "status": true,
+      "firstName": "Iman",
+      "lastName": "Zahid",
+      "phoneNumber": 5313913493,
+      "email": "imanzahidzahid3@gmail.com",
+      "department": "Sales",
+      "salary": 4444,
+      "entryDate": "2024-07-26T19:00:00.000Z",
+      "leaveDate": "-"
+    },
+    {
+      "status": true,
+      "firstName": "David ",
+      "lastName": "Dodd",
+      "phoneNumber": 33333333,
+      "email": "Dodo@dada.com",
+      "department": "Sales",
+      "salary": 222233,
+      "entryDate": "2024-07-30T19:00:00.000Z",
+      "leaveDate": "-",
+      "id": "367666724"
+    },
+    {
+      "id": "678516160",
+      "status": true,
+      "firstName": "Ram",
+      "lastName": "Lela",
+      "phoneNumber": 333333,
+      "email": "Lolo@lala.com",
+      "department": "Sales",
+      "salary": 222,
+      "entryDate": "2024-07-27T19:00:00.000Z",
+      "leaveDate": "-"
+    },
+    {
+      "id": "349070724",
+      "status": true,
+      "firstName": "Bobo",
+      "lastName": "Baba",
+      "phoneNumber": 333333,
+      "email": "m.shehrozzahid76@gmail.com",
+      "department": "IT",
+      "salary": 333,
+      "entryDate": "2024-07-29T19:00:00.000Z",
+      "leaveDate": "-"
+    },
+    {
+      "status": false,
+      "firstName": "Iman",
+      "lastName": "Zahid",
+      "phoneNumber": 3358111645,
+      "email": "m.shehrozzahid76@gmail.com",
+      "department": "IT",
+      "salary": 666,
+      "entryDate": "2024-07-30T19:00:00.000Z",
+      "leaveDate": "2027-09-23T19:00:00.000Z",
+      "id": "806648263"
     }
   ]
 }

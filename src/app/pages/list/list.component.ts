@@ -20,6 +20,7 @@ export class ListComponent implements OnInit, OnDestroy {
   isEmployer = sessionStorage.getItem('role') === 'employer';
   private unsubscribe$ = new Subject<void>();
   private _searchTerm: string = '';
+  loading = false;
 
   columns = [
     { field: 'status', label: 'STATUS' },
@@ -52,29 +53,35 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   getEmployees(): void {
-    this.employeeService
-      .getEmployees()
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe(
-        (data: Employee[]) => {
-          this.employees = data.map((employee) => ({
-            ...employee,
-            entryDate: this.formatDate(employee.entryDate),
-            leaveDate:
-              employee.leaveDate && employee.leaveDate !== '-'
-                ? this.formatDate(employee.leaveDate)
-                : null,
-          }));
-        },
-        (error) => {
-          console.error('Error fetching employees', error);
-          this.messageService.add({
-            severity: 'error',
-            summary: this.translate.instant('ERROR'),
-            detail: this.translate.instant('AN_ERROR_OCCURRED'),
-          });
-        }
-      );
+    this.loading = true;
+    setTimeout(() => {
+      // Simulate a delay
+      this.employeeService
+        .getEmployees()
+        .pipe(takeUntil(this.unsubscribe$))
+        .subscribe(
+          (data: Employee[]) => {
+            this.employees = data.map((employee) => ({
+              ...employee,
+              entryDate: this.formatDate(employee.entryDate),
+              leaveDate:
+                employee.leaveDate && employee.leaveDate !== '-'
+                  ? this.formatDate(employee.leaveDate)
+                  : null,
+            }));
+            this.loading = false;
+          },
+          (error) => {
+            console.error('Error fetching employees', error);
+            this.messageService.add({
+              severity: 'error',
+              summary: this.translate.instant('ERROR'),
+              detail: this.translate.instant('AN_ERROR_OCCURRED'),
+            });
+            this.loading = false;
+          }
+        );
+    }, 5000); // Simulate a 5-second delay
   }
 
   formatDate(date: string): string {

@@ -30,6 +30,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { ToastInterceptor } from './services/toast.interceptor';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { EmployeeFormComponent } from './pages/employee-form/employee-form.component';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -49,6 +50,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ReactiveFormsModule,
     RouterModule,
     AppRoutingModule,
+    ProgressSpinnerModule,
     TableModule,
     ButtonModule,
     InputTextModule,

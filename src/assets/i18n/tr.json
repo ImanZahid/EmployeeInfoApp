@@ -45,5 +45,12 @@
   "NO_PERMISSION_DELETE": "Çalışan silme izniniz yok.",
   "OPERATION_COMPLETED_SUCCESSFULLY": "İşlem başarıyla tamamlandı",
   "AN_ERROR_OCCURRED": "Bir hata oluştu",
-  "GO_BACK_TO_HOME": "Ana Sayfaya Dön"
+  "GO_BACK_TO_HOME": "Ana Sayfaya Dön",
+  "DATA_SUCCESSFULLY_RETRIEVED": "Veri başarıyla alındı",
+  "EMPLOYEE_SUCCESSFULLY_ADDED": "Çalışan başarıyla eklendi",
+  "EMPLOYEE_SUCCESSFULLY_UPDATED": "Çalışan başarıyla güncellendi",
+  "EMPLOYEE_SUCCESSFULLY_DELETED": "Çalışan başarıyla silindi",
+  "ERROR_RETRIEVING_DATA": "Veri alınırken hata oluştu",
+  "ERROR_ADDING_EMPLOYEE": "Çalışan eklenirken hata oluştu",
+  "ERROR_UPDATING_EMPLOYEE": "Çalışan güncellenirken hata oluştu"
 }

@@ -3,21 +3,21 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { Employee } from '../models/employee.model';
+import { delay } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root', 
+  providedIn: 'root',
 })
 export class EmployeeService {
   private apiURL = 'http://localhost:3000/employees';
 
   constructor(private http: HttpClient) {}
 
-  //Get all employees
   getEmployees(): Observable<Employee[]> {
     return this.http.get<Employee[]>(this.apiURL);
+    delay(5000);
   }
 
-  //Get an employee
   getEmployee(id: string): Observable<Employee> {
     const url = `${this.apiURL}/${id}`;
     return this.http.get<Employee>(url);

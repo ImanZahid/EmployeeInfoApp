@@ -2,6 +2,7 @@
   <h1>{{ "EMPLOYEE_LIST" | translate }}</h1>
   <div class="button-group">
     <button
+      *ngIf="isEmployer"
       pButton
       type="button"
       [label]="'ADD_NEW_EMPLOYEE' | translate"
@@ -10,9 +11,10 @@
       class="p-button-rounded p-button-success"
     ></button>
     <button
+      *ngIf="isEmployer"
       pButton
       type="button"
-      [label]="'DELETE_SELECTED_ROWS' | translate"
+      [label]="deleteButtonLabel"
       icon="pi pi-trash"
       (click)="confirmDeleteSelected()"
       [disabled]="!hasSelectedEmployees()"
@@ -28,12 +30,32 @@
     ></button>
   </div>
 
+  <div class="search-container">
+    <input
+      pInputText
+      type="text"
+      placeholder="{{ 'SEARCH' | translate }}"
+      (input)="updateSearchTerm($event)"
+      (keydown.enter)="applyFilter()"
+      class="search-input"
+    />
+    <button
+      pButton
+      icon="pi pi-search"
+      class="p-button-rounded p-button-info p-button-sm"
+      (click)="applyFilter()"
+      pTooltip="{{ 'SEARCH' | translate }}"
+      tooltipPosition="top"
+    ></button>
+  </div>
+
   <p-table
     [value]="employees"
     [(selection)]="selectedEmployees"
     dataKey="id"
     styleClass="p-datatable-gridlines custom-table"
     [tableStyle]="{ 'min-width': '80rem' }"
+    [globalFilterFields]="['firstName', 'lastName']"
   >
     <ng-template pTemplate="header">
       <tr>
@@ -44,28 +66,16 @@
             (onChange)="toggleSelectAll($event)"
           ></p-checkbox>
         </th>
-        <th>{{ "STATUS" | translate }}</th>
-        <th>{{ "ID" | translate }}</th>
-        <th>{{ "FIRST_NAME" | translate }}</th>
-        <th>{{ "LAST_NAME" | translate }}</th>
-        <th>{{ "PHONE_NUMBER" | translate }}</th>
-        <th>{{ "EMAIL" | translate }}</th>
-        <th>{{ "DEPARTMENT" | translate }}</th>
-        <th>{{ "SALARY" | translate }}</th>
-        <th>{{ "ENTRY_DATE" | translate }}</th>
-        <th>{{ "LEAVE_DATE" | translate }}</th>
+        <ng-container *ngFor="let column of columns">
+          <th *ngIf="isEmployer || column.field !== 'salary'">
+            {{ column.label }}
+          </th>
+        </ng-container>
         <th>{{ "ACTIONS" | translate }}</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-employee>
-      <tr
-        style="
-          text-align: center;
-          border: 1px solid #dee2e6;
-          padding: 8px;
-          cursor: pointer;
-        "
-      >
+      <tr class="employee-row">
         <td>
           <p-checkbox
             [(ngModel)]="employee.selected"
@@ -75,33 +85,44 @@
         </td>
         <td>
           {{
-            employee.status ? ("ACTIVE" | translate) : ("INACTIVE" | translate)
+            displayValue(
+              employee.status
+                ? ("ACTIVE" | translate)
+                : ("INACTIVE" | translate)
+            )
           }}
         </td>
-        <td>{{ employee.id }}</td>
-        <td>{{ employee.firstName }}</td>
-        <td>{{ employee.lastName }}</td>
-        <td>{{ employee.phoneNumber }}</td>
-        <td>{{ employee.email }}</td>
-        <td>{{ employee.department | translate }}</td>
-        <td>{{ employee.salary | currency : "USD" }}</td>
-        <td>{{ employee.entryDate }}</td>
-        <td>{{ employee.leaveDate }}</td>
-        <td>
-          <span
-            class="action-link"
+        <td>{{ displayValue(employee.id) }}</td>
+        <td>{{ displayValue(employee.firstName) }}</td>
+        <td>{{ displayValue(employee.lastName) }}</td>
+        <td>{{ displayValue(employee.phoneNumber) }}</td>
+        <td>{{ displayValue(employee.email) }}</td>
+        <td>{{ displayValue(employee.department | translate) }}</td>
+        <td *ngIf="isEmployer">
+          {{ displayValue(employee.salary) | currency : "USD" }}
+        </td>
+        <td>{{ displayValue(employee.entryDate) }}</td>
+        <td>{{ displayValue(employee.leaveDate) }}</td>
+        <td class="actions-cell">
+          <button
+            pButton
+            type="button"
+            icon="pi pi-pencil"
             (click)="onEditEmployee(employee)"
-            style="margin-right: 10px"
-          >
-            {{ "EDIT" | translate }}
-          </span>
-          <span
-            class="action-link"
+            pTooltip="{{ 'EDIT' | translate }}"
+            tooltipPosition="top"
+            class="p-button-rounded p-button-info p-button-sm"
+          ></button>
+          <button
+            *ngIf="isEmployer"
+            pButton
+            type="button"
+            icon="pi pi-trash"
             (click)="confirmDelete(employee)"
-            style="margin-right: 10px"
-          >
-            {{ "DELETE" | translate }}
-          </span>
+            pTooltip="{{ 'DELETE' | translate }}"
+            tooltipPosition="top"
+            class="p-button-rounded p-button-danger p-button-sm"
+          ></button>
         </td>
       </tr>
     </ng-template>

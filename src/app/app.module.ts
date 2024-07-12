@@ -28,6 +28,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { TooltipModule } from 'primeng/tooltip';
 import { ToastInterceptor } from './services/toast.interceptor';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 
@@ -61,6 +62,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserAnimationsModule,
     InputSwitchModule,
     ConfirmDialogModule,
+    TooltipModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

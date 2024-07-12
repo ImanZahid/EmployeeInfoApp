@@ -1,3 +1,14 @@
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.search-input {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
 .container {
   padding: 10px;
   text-align: center;
@@ -26,6 +37,13 @@ h1 {
 .action-link:hover {
   text-decoration: underline;
   color: #202122;
+}
+
+.actions-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 
 /* Media Queries */

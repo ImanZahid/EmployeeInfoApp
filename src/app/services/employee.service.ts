@@ -5,7 +5,7 @@ import { map, switchMap } from 'rxjs/operators';
 import { Employee } from '../models/employee.model';
 
 @Injectable({
-  providedIn: 'root', // making it available throughout the application
+  providedIn: 'root', 
 })
 export class EmployeeService {
   private apiURL = 'http://localhost:3000/employees';

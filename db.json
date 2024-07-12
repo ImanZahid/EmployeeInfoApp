@@ -1,42 +1,6 @@
 {
   "employees": [
     {
-      "id": "336816863",
-      "status": false,
-      "firstName": "Büşra ",
-      "lastName": "Aydın",
-      "phoneNumber": 9090909909,
-      "email": "Busra@xn--aydn-nza.com",
-      "department": "Marketing",
-      "salary": 10000000000,
-      "entryDate": "2000-09-29T19:00:00.000Z",
-      "leaveDate": "2029-12-28T19:00:00.000Z"
-    },
-    {
-      "id": "469002077",
-      "status": true,
-      "firstName": "Yusha ",
-      "lastName": "Kuralay",
-      "phoneNumber": 8888888,
-      "email": "Yusha@Kuralay.com",
-      "department": "IT",
-      "salary": 89898,
-      "entryDate": "2019-12-25T19:00:00.000Z",
-      "leaveDate": "-"
-    },
-    {
-      "status": true,
-      "firstName": "Cumhur ",
-      "lastName": "Eryaşar",
-      "phoneNumber": 222222,
-      "email": "Cumhur@arksoft.com",
-      "department": "HR",
-      "salary": 0,
-      "entryDate": "2023-09-29T19:00:00.000Z",
-      "leaveDate": "-",
-      "id": "397056204"
-    },
-    {
       "id": "821411436",
       "status": true,
       "firstName": "Iman",
@@ -62,15 +26,27 @@
     },
     {
       "status": false,
-      "firstName": "Tahir Emre",
-      "lastName": "Esirgen",
-      "phoneNumber": 6666,
+      "firstName": "Iman",
+      "lastName": "Zahid",
+      "phoneNumber": 3358111645,
+      "email": "m.shehrozzahid76@gmail.com",
+      "department": "Marketing",
+      "salary": 333333,
+      "entryDate": "2024-07-30T19:00:00.000Z",
+      "leaveDate": "2024-07-30T19:00:00.000Z",
+      "id": "794815730"
+    },
+    {
+      "id": "806655356",
+      "status": true,
+      "firstName": "Aaishah",
+      "lastName": "Raja",
+      "phoneNumber": 3358111645,
       "email": "imanzahidzahid3@gmail.com",
       "department": "Marketing",
-      "salary": 1111,
+      "salary": 5555,
       "entryDate": "2024-07-30T19:00:00.000Z",
-      "leaveDate": "2024-10-25T19:00:00.000Z",
-      "id": "981105901"
+      "leaveDate": "-"
     }
   ]
 }

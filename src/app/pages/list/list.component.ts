@@ -19,6 +19,20 @@ export class ListComponent implements OnInit, OnDestroy {
   allChecked = false;
   isEmployer = sessionStorage.getItem('role') === 'employer';
   private unsubscribe$ = new Subject<void>();
+  private _searchTerm: string = '';
+
+  columns = [
+    { field: 'status', label: 'STATUS' },
+    { field: 'id', label: 'ID' },
+    { field: 'firstName', label: 'FIRST_NAME' },
+    { field: 'lastName', label: 'LAST_NAME' },
+    { field: 'phoneNumber', label: 'PHONE_NUMBER' },
+    { field: 'email', label: 'EMAIL' },
+    { field: 'department', label: 'DEPARTMENT' },
+    { field: 'salary', label: 'SALARY' },
+    { field: 'entryDate', label: 'ENTRY_DATE' },
+    { field: 'leaveDate', label: 'LEAVE_DATE' },
+  ];
 
   constructor(
     private employeeService: EmployeeService,
@@ -51,7 +65,6 @@ export class ListComponent implements OnInit, OnDestroy {
                 ? this.formatDate(employee.leaveDate)
                 : null,
           }));
-          // console.log('Updated employee list:', this.employees);
         },
         (error) => {
           console.error('Error fetching employees', error);
@@ -70,6 +83,10 @@ export class ListComponent implements OnInit, OnDestroy {
     const month = String(d.getMonth() + 1).padStart(2, '0');
     const day = String(d.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
+  }
+
+  displayValue(value: any): string {
+    return value !== null && value !== undefined && value !== '' ? value : '-';
   }
 
   onAddEmployee(): void {
@@ -143,6 +160,7 @@ export class ListComponent implements OnInit, OnDestroy {
           summary: this.translate.instant('SUCCESS'),
           detail: this.translate.instant('EMPLOYEE_DELETED_SUCCESSFULLY'),
         });
+        this.resetSelection();
       },
       (error) => {
         console.error('Error deleting employee', error);
@@ -159,11 +177,9 @@ export class ListComponent implements OnInit, OnDestroy {
     const deleteRequests = this.selectedEmployees.map((employee) =>
       this.employeeService.deleteEmployee(employee.id).toPromise()
     );
-    // console.log(deleteRequests);
 
     Promise.all(deleteRequests)
       .then(() => {
-        // console.log('All employees deleted');
         this.getEmployees();
         this.messageService.add({
           severity: 'success',
@@ -172,6 +188,7 @@ export class ListComponent implements OnInit, OnDestroy {
             'SELECTED_EMPLOYEES_DELETED_SUCCESSFULLY'
           ),
         });
+        this.resetSelection();
       })
       .catch((error) => {
         console.error('Error deleting employees', error);
@@ -207,5 +224,32 @@ export class ListComponent implements OnInit, OnDestroy {
   goBackToHome(): void {
     localStorage.clear();
     this.router.navigate(['/welcome']);
+  }
+
+  updateSearchTerm(event: any): void {
+    this._searchTerm = event.target.value.toLowerCase();
+  }
+
+  applyFilter(): void {
+    if (this._searchTerm) {
+      this.employees = this.employees.filter(
+        (employee) =>
+          employee.firstName.toLowerCase().includes(this._searchTerm) ||
+          employee.lastName.toLowerCase().includes(this._searchTerm)
+      );
+    } else {
+      this.getEmployees();
+    }
+  }
+
+  resetSelection(): void {
+    this.selectedEmployees = [];
+    this.allChecked = false;
+  }
+
+  get deleteButtonLabel(): string {
+    return this.translate.instant('DELETE_SELECTED_ROWS', {
+      count: this.selectedEmployees.length,
+    });
   }
 }

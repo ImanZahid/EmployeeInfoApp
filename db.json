@@ -37,19 +37,7 @@
       "leaveDate": "-"
     },
     {
-      "id": "cbfd",
-      "status": true,
-      "firstName": "Aaishah",
-      "lastName": "Raja",
-      "phoneNumber": "(111) 111-1111",
-      "email": "ash@cash.com",
-      "department": "Sales",
-      "salary": 22222,
-      "entryDate": "2024-07-30T19:00:00.000Z",
-      "leaveDate": "-"
-    },
-    {
-      "status": true,
+      "status": false,
       "firstName": "Boran",
       "lastName": "Boraaaaaa",
       "phoneNumber": "(444) 444-4444",
@@ -57,8 +45,32 @@
       "department": "IT",
       "salary": 55,
       "entryDate": "2024-07-30T19:00:00.000Z",
-      "leaveDate": "-",
+      "leaveDate": "2024-07-26T19:00:00.000Z",
       "id": "909060282"
+    },
+    {
+      "id": "249143107",
+      "status": true,
+      "firstName": "sono",
+      "lastName": "mono",
+      "phoneNumber": "(399) 999-9999",
+      "email": "s0no@mono.com",
+      "department": "Marketing",
+      "salary": 22222222,
+      "entryDate": "2024-07-30T19:00:00.000Z",
+      "leaveDate": "-"
+    },
+    {
+      "id": "130390938",
+      "status": true,
+      "firstName": "rona",
+      "lastName": "tona",
+      "phoneNumber": "(444) 444-4444",
+      "email": "rona@tona.com",
+      "department": "Sales",
+      "salary": 222,
+      "entryDate": "2024-07-18T19:00:00.000Z",
+      "leaveDate": "-"
     }
   ]
 }

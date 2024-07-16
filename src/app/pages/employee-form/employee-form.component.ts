@@ -21,12 +21,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class EmployeeFormComponent implements OnInit, OnDestroy {
   employeeForm!: FormGroup;
-  departments = [
-    { label: 'HR', value: Department.HR },
-    { label: 'IT', value: Department.IT },
-    { label: 'Sales', value: Department.Sales },
-    { label: 'Marketing', value: Department.Marketing },
-  ];
+  departments: { label: string; value: Department }[] = [];
   employeeId!: string;
   isEditMode = false;
   saving = false;
@@ -44,6 +39,7 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((language) => {
         this.translate.use(language);
+        this.setTranslatedDepartments();
       });
   }
 
@@ -51,6 +47,7 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
     this.employeeId = this.route.snapshot.params['id'];
     this.isEditMode = !!this.employeeId;
     this.initForm();
+    this.setTranslatedDepartments();
     if (this.isEditMode) {
       this.loadAndSetEmployee();
     }
@@ -141,6 +138,18 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
       );
   }
 
+  setTranslatedDepartments(): void {
+    this.departments = [
+      { label: this.translate.instant('HR'), value: Department.HR },
+      { label: this.translate.instant('IT'), value: Department.IT },
+      { label: this.translate.instant('Sales'), value: Department.Sales },
+      {
+        label: this.translate.instant('Marketing'),
+        value: Department.Marketing,
+      },
+    ];
+  }
+
   uniqueEmailValidator(control: AbstractControl): ValidationErrors | null {
     const currentEmployees = this.employeeService.getCurrentEmployees();
     const emailExists = currentEmployees.some(
@@ -162,15 +171,21 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
         formValue.leaveDate = '-';
       }
       if (this.isEditMode) {
-        this.employeeService.updateEmployee(formValue).subscribe(() => {
-          this.saving = false;
-          this.router.navigate(['/list']);
-        });
+        this.employeeService.updateEmployee(formValue).subscribe(
+          () => {
+            this.saving = false;
+            this.router.navigate(['/list']);
+          },
+          () => (this.saving = false)
+        );
       } else {
-        this.employeeService.addEmployee(formValue).subscribe(() => {
-          this.saving = false;
-          this.router.navigate(['/list']);
-        });
+        this.employeeService.addEmployee(formValue).subscribe(
+          () => {
+            this.saving = false;
+            this.router.navigate(['/list']);
+          },
+          () => (this.saving = false)
+        );
       }
     }
   }

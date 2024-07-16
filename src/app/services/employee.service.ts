@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 import { Employee } from '../models/employee.model';
 import { delay } from 'rxjs/operators';
 
@@ -40,14 +40,14 @@ export class EmployeeService {
       headers: new HttpHeaders({ 'Content-type': 'application/json' }),
     };
 
-    return this.getEmployees().pipe(
-      map((employees) => {
-        employee.id = this.generateUniqueId(employees);
-        return employee;
-      }),
-      switchMap((newEmployee) =>
-        this.http.post<Employee>(this.apiURL, newEmployee, httpOptions)
-      )
+    const currentEmployees = this.employeesSubject.getValue();
+    employee.id = this.generateUniqueId(currentEmployees);
+
+    return this.http.post<Employee>(this.apiURL, employee, httpOptions).pipe(
+      tap((newEmployee) => {
+        const employees = [...this.employeesSubject.getValue(), newEmployee];
+        this.employeesSubject.next(employees);
+      })
     );
   }
 
@@ -56,13 +56,21 @@ export class EmployeeService {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-type': 'application/json' }),
     };
-    return this.http.put<Employee>(url, employee, httpOptions);
+
+    return this.http.put<Employee>(url, employee, httpOptions).pipe(
+      tap(() => {
+        const employees = this.employeesSubject
+          .getValue()
+          .map((emp) => (emp.id === employee.id ? employee : emp));
+        this.employeesSubject.next(employees);
+      })
+    );
   }
 
-  deleteEmployee(id: string): Observable<void> {
+  deleteEmployee(id: string): Observable<{}> {
     const url = `${this.apiURL}/${id}`;
-    return this.http.delete<void>(url).pipe(
-      map(() => {
+    return this.http.delete(url).pipe(
+      tap(() => {
         const employees = this.employeesSubject
           .getValue()
           .filter((emp) => emp.id !== id);
@@ -70,7 +78,6 @@ export class EmployeeService {
       })
     );
   }
-
   private generateUniqueId(employees: Employee[]): string {
     let uniqueId: string;
     const ids = employees.map((emp) => String(emp.id));
@@ -79,7 +86,6 @@ export class EmployeeService {
     } while (ids.includes(uniqueId));
     return uniqueId;
   }
-
   setEmployees(employees: Employee[]): void {
     this.employeesSubject.next(employees);
   }

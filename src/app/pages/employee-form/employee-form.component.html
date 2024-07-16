@@ -124,9 +124,9 @@
           <button
             pButton
             pRipple
-            label="{{ 'SAVE' | translate }}"
+            [label]="saving ? ('SAVING' | translate) : ('SAVE' | translate)"
             class="p-button-success"
-            [disabled]="employeeForm.invalid"
+            [disabled]="employeeForm.invalid || saving"
           ></button>
         </div>
       </div>

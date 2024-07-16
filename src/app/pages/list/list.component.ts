@@ -15,6 +15,7 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class ListComponent implements OnInit, OnDestroy {
   employees: Employee[] = [];
+  originalEmployees: Employee[] = [];
   selectedEmployees: Employee[] = [];
   allChecked = false;
   isEmployer = sessionStorage.getItem('role') === 'employer';
@@ -59,7 +60,7 @@ export class ListComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(
         (data: Employee[]) => {
-          this.employees = data.map((employee) => ({
+          this.originalEmployees = data.map((employee) => ({
             ...employee,
             entryDate: this.formatDate(employee.entryDate),
             leaveDate:
@@ -67,6 +68,7 @@ export class ListComponent implements OnInit, OnDestroy {
                 ? this.formatDate(employee.leaveDate)
                 : null,
           }));
+          this.employees = [...this.originalEmployees];
           this.loading = false;
         },
         (error) => {
@@ -222,7 +224,6 @@ export class ListComponent implements OnInit, OnDestroy {
     this.allChecked = event.checked;
     this.selectedEmployees = this.allChecked ? [...this.employees] : [];
     this.employees.forEach((employee) => (employee.selected = this.allChecked));
-    console.log(this.selectedEmployees);
   }
 
   goBackToHome(): void {
@@ -236,13 +237,13 @@ export class ListComponent implements OnInit, OnDestroy {
 
   applyFilter(): void {
     if (this._searchTerm) {
-      this.employees = this.employees.filter(
+      this.employees = this.originalEmployees.filter(
         (employee) =>
           employee.firstName.toLowerCase().includes(this._searchTerm) ||
           employee.lastName.toLowerCase().includes(this._searchTerm)
       );
     } else {
-      this.getEmployees();
+      this.employees = [...this.originalEmployees];
     }
   }
 

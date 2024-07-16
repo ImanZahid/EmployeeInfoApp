@@ -29,6 +29,7 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
   ];
   employeeId!: string;
   isEditMode = false;
+  saving = false;
   private unsubscribe$ = new Subject<void>();
 
   constructor(
@@ -152,6 +153,7 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
   onSubmit(event: Event): void {
     event.preventDefault();
     if (this.employeeForm.valid) {
+      this.saving = true;
       const formValue = { ...this.employeeForm.value, id: this.employeeId };
 
       formValue.department = this.employeeForm.value.department.value;
@@ -161,10 +163,12 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
       }
       if (this.isEditMode) {
         this.employeeService.updateEmployee(formValue).subscribe(() => {
+          this.saving = false;
           this.router.navigate(['/list']);
         });
       } else {
         this.employeeService.addEmployee(formValue).subscribe(() => {
+          this.saving = false;
           this.router.navigate(['/list']);
         });
       }

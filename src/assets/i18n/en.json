@@ -21,6 +21,7 @@
   "CONFIRMATION": "Confirmation",
   "EDIT_EMPLOYEE": "Edit Employee",
   "SAVE": "Save",
+  "SAVING": "Saving...",
   "BACK": "Back",
   "SEARCH": "Search",
   "FIRST_NAME_ERROR": "First Name is required.",

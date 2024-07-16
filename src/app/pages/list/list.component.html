@@ -58,7 +58,7 @@
     >
       <ng-template pTemplate="header">
         <tr>
-          <th>
+          <th *ngIf="isEmployer">
             <p-checkbox
               [(ngModel)]="allChecked"
               binary="true"
@@ -75,7 +75,7 @@
       </ng-template>
       <ng-template pTemplate="body" let-employee>
         <tr class="employee-row">
-          <td>
+          <td *ngIf="isEmployer">
             <p-checkbox
               [(ngModel)]="employee.selected"
               binary="true"

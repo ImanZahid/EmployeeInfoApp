@@ -27,6 +27,7 @@
   "LAST_NAME_ERROR": "Soyad gereklidir.",
   "PHONE_NUMBER_ERROR": "Telefon Numarası gereklidir.",
   "EMAIL_ERROR": "E-posta gereklidir ve geçerli bir e-posta adresi olmalıdır.",
+  "EMAIL_ERROR_EXISTS": "E-posta zaten mevcut.",
   "SELECT_DEPARTMENT": "Bir Departman Seçin",
   "ACTIVE": "Doğru",
   "INACTIVE": "Yanlış",

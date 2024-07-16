@@ -95,6 +95,54 @@
       "entryDate": "2024-07-23T19:00:00.000Z",
       "leaveDate": "-",
       "id": "501274108"
+    },
+    {
+      "id": "860515724",
+      "status": true,
+      "firstName": "Iman",
+      "lastName": "Zahid",
+      "phoneNumber": "(999) 999-9999",
+      "email": "m.shehrozzahid76@gmail.com",
+      "department": "Sales",
+      "salary": 9999,
+      "entryDate": "2024-07-23T19:00:00.000Z",
+      "leaveDate": "-"
+    },
+    {
+      "id": "607152537",
+      "status": true,
+      "firstName": "Iman",
+      "lastName": "Zahid",
+      "phoneNumber": "(999) 999-9999",
+      "email": "m.shehrozzahid76@gmail.com",
+      "department": "Sales",
+      "salary": 9999,
+      "entryDate": "2024-07-23T19:00:00.000Z",
+      "leaveDate": "-"
+    },
+    {
+      "id": "652123977",
+      "status": true,
+      "firstName": "Iman",
+      "lastName": "Zahid",
+      "phoneNumber": "(333) 333-3333",
+      "email": "imanzahidzahid33@gmail.com3",
+      "department": "Sales",
+      "salary": 333333,
+      "entryDate": "2024-07-30T19:00:00.000Z",
+      "leaveDate": "-"
+    },
+    {
+      "id": "442644197",
+      "status": true,
+      "firstName": "Iman",
+      "lastName": "Zahid",
+      "phoneNumber": "(333) 333-3333",
+      "email": "imanzahidzahid33@gmail.com3",
+      "department": "Sales",
+      "salary": 333333,
+      "entryDate": "2024-07-30T19:00:00.000Z",
+      "leaveDate": "-"
     }
   ]
 }

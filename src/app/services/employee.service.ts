@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { Employee } from '../models/employee.model';
 import { delay } from 'rxjs/operators';
@@ -10,12 +10,24 @@ import { delay } from 'rxjs/operators';
 })
 export class EmployeeService {
   private apiURL = 'http://localhost:3000/employees';
+  private employeesSubject: BehaviorSubject<Employee[]> = new BehaviorSubject<
+    Employee[]
+  >([]);
 
   constructor(private http: HttpClient) {}
 
   getEmployees(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(this.apiURL);
-    delay(5000);
+    if (this.employeesSubject.getValue().length) {
+      return this.employeesSubject.asObservable();
+    } else {
+      return this.http.get<Employee[]>(this.apiURL).pipe(
+        map((employees) => {
+          this.employeesSubject.next(employees);
+          return employees;
+        }),
+        delay(2000)
+      );
+    }
   }
 
   getEmployee(id: string): Observable<Employee> {
@@ -28,7 +40,7 @@ export class EmployeeService {
       headers: new HttpHeaders({ 'Content-type': 'application/json' }),
     };
 
-    return this.http.get<Employee[]>(this.apiURL).pipe(
+    return this.getEmployees().pipe(
       map((employees) => {
         employee.id = this.generateUniqueId(employees);
         return employee;
@@ -47,10 +59,16 @@ export class EmployeeService {
     return this.http.put<Employee>(url, employee, httpOptions);
   }
 
-  deleteEmployee(id: string): Observable<Employee> {
+  deleteEmployee(id: string): Observable<void> {
     const url = `${this.apiURL}/${id}`;
-    // console.log(`Deleting employee with id: ${id}`);
-    return this.http.delete<Employee>(url);
+    return this.http.delete<void>(url).pipe(
+      map(() => {
+        const employees = this.employeesSubject
+          .getValue()
+          .filter((emp) => emp.id !== id);
+        this.employeesSubject.next(employees);
+      })
+    );
   }
 
   private generateUniqueId(employees: Employee[]): string {
@@ -60,5 +78,17 @@ export class EmployeeService {
       uniqueId = String(Math.floor(100000000 + Math.random() * 900000000));
     } while (ids.includes(uniqueId));
     return uniqueId;
+  }
+
+  setEmployees(employees: Employee[]): void {
+    this.employeesSubject.next(employees);
+  }
+
+  getEmployeesData(): Observable<Employee[]> {
+    return this.employeesSubject.asObservable();
+  }
+
+  getCurrentEmployees(): Employee[] {
+    return this.employeesSubject.getValue();
   }
 }

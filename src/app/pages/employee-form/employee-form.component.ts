@@ -1,5 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  AbstractControl,
+  ValidationErrors,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from '../../services/employee.service';
 import { Employee, Department } from '../../models/employee.model';
@@ -78,7 +84,14 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
         '',
         [Validators.required, Validators.pattern(/^\(\d{3}\) \d{3}-\d{4}$/)],
       ],
-      email: ['', [Validators.required, Validators.email]],
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.email,
+          this.uniqueEmailValidator.bind(this),
+        ],
+      ],
       department: [null, Validators.required],
       salary: [null, Validators.required],
       entryDate: [null, Validators.required],
@@ -125,6 +138,15 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
           console.error('Error fetching employee', error);
         }
       );
+  }
+
+  uniqueEmailValidator(control: AbstractControl): ValidationErrors | null {
+    const currentEmployees = this.employeeService.getCurrentEmployees();
+    const emailExists = currentEmployees.some(
+      (employee) =>
+        employee.email === control.value && employee.id !== this.employeeId
+    );
+    return emailExists ? { emailExists: true } : null;
   }
 
   onSubmit(event: Event): void {

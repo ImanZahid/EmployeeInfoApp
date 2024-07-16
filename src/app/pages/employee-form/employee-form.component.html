@@ -42,7 +42,11 @@
       </div>
       <div class="form-group">
         <label>{{ "PHONE_NUMBER" | translate }}</label>
-        <input type="number" pInputText formControlName="phoneNumber" />
+        <p-inputMask
+          formControlName="phoneNumber"
+          mask="(999) 999-9999"
+          placeholder="(999) 999-9999"
+        ></p-inputMask>
         <div
           *ngIf="
             employeeForm.get('phoneNumber')!.invalid &&

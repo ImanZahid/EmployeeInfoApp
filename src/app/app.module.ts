@@ -31,6 +31,7 @@ import { ToastInterceptor } from './services/toast.interceptor';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { EmployeeFormComponent } from './pages/employee-form/employee-form.component';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { InputMaskModule } from 'primeng/inputmask';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -63,6 +64,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     InputSwitchModule,
     ConfirmDialogModule,
     TooltipModule,
+    InputMaskModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

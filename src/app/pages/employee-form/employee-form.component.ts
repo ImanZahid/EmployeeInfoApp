@@ -74,7 +74,10 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
           Validators.maxLength(256),
         ],
       ],
-      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      phoneNumber: [
+        '',
+        [Validators.required, Validators.pattern(/^\(\d{3}\) \d{3}-\d{4}$/)],
+      ],
       email: ['', [Validators.required, Validators.email]],
       department: [null, Validators.required],
       salary: [null, Validators.required],

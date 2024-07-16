@@ -55,7 +55,6 @@ export class ListComponent implements OnInit, OnDestroy {
   getEmployees(): void {
     this.loading = true;
     setTimeout(() => {
-      // Simulate a delay
       this.employeeService
         .getEmployees()
         .pipe(takeUntil(this.unsubscribe$))

@@ -83,6 +83,18 @@
       "entryDate": "2024-07-30T19:00:00.000Z",
       "leaveDate": "2027-09-23T19:00:00.000Z",
       "id": "806648263"
+    },
+    {
+      "status": true,
+      "firstName": "iman",
+      "lastName": "telephone",
+      "phoneNumber": "(244) 444-4444",
+      "email": "imanzahidzahid3@gmail.com",
+      "department": "IT",
+      "salary": 66,
+      "entryDate": "2024-07-23T19:00:00.000Z",
+      "leaveDate": "-",
+      "id": "501274108"
     }
   ]
 }

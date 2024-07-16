@@ -67,10 +67,10 @@
           </th>
           <ng-container *ngFor="let column of columns">
             <th *ngIf="isEmployer || column.field !== 'salary'">
-              {{ column.label }}
+              {{ column.label | translate }}
             </th>
           </ng-container>
-          <th>{{ "ACTIONS" | translate }}</th>
+          <th *ngIf="isEmployer">{{ "ACTIONS" | translate }}</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-employee>
@@ -82,27 +82,12 @@
               (onChange)="updateSelectedEmployees(employee, $event.checked)"
             ></p-checkbox>
           </td>
-          <td>
-            {{
-              displayValue(
-                employee.status
-                  ? ("ACTIVE" | translate)
-                  : ("INACTIVE" | translate)
-              )
-            }}
-          </td>
-          <td>{{ displayValue(employee.id) }}</td>
-          <td>{{ displayValue(employee.firstName) }}</td>
-          <td>{{ displayValue(employee.lastName) }}</td>
-          <td>{{ displayValue(employee.phoneNumber) }}</td>
-          <td>{{ displayValue(employee.email) }}</td>
-          <td>{{ displayValue(employee.department | translate) }}</td>
-          <td *ngIf="isEmployer">
-            {{ displayValue(employee.salary) | currency : "USD" }}
-          </td>
-          <td>{{ displayValue(employee.entryDate) }}</td>
-          <td>{{ displayValue(employee.leaveDate) }}</td>
-          <td class="actions-cell">
+          <ng-container *ngFor="let column of columns">
+            <td *ngIf="isEmployer || column.field !== 'salary'">
+              {{ displayValue(employee[column.field] | translate) }}
+            </td>
+          </ng-container>
+          <td *ngIf="isEmployer" class="actions-cell">
             <button
               pButton
               type="button"

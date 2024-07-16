@@ -1,7 +1,11 @@
 <div class="container flex justify-content-center align-items-center">
   <div class="form-container">
     <h1>
-      {{ isEditMode ? "EDIT_EMPLOYEE" : ("ADD_NEW_EMPLOYEE" | translate) }}
+      {{
+        isEditMode
+          ? ("EDIT_EMPLOYEE" | translate)
+          : ("ADD_NEW_EMPLOYEE" | translate)
+      }}
     </h1>
     <form [formGroup]="employeeForm" (ngSubmit)="onSubmit($event)">
       <div class="switch-group">

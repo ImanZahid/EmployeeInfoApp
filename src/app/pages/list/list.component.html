@@ -49,12 +49,17 @@
     </div>
 
     <p-table
-      [value]="employees"
+      [value]="paginatedEmployees"
       [(selection)]="selectedEmployees"
       dataKey="id"
       styleClass="p-datatable-gridlines custom-table"
       [tableStyle]="{ 'min-width': '80rem' }"
       [globalFilterFields]="['firstName', 'lastName']"
+      [paginator]="true"
+      [rows]="rows"
+      [rowsPerPageOptions]="[10, 25, 50, 100]"
+      [totalRecords]="totalRecords"
+      (onPage)="paginate($event)"
     >
       <ng-template pTemplate="header">
         <tr>

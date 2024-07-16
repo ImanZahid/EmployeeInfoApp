@@ -16,12 +16,16 @@ import { takeUntil } from 'rxjs/operators';
 export class ListComponent implements OnInit, OnDestroy {
   employees: Employee[] = [];
   originalEmployees: Employee[] = [];
+  paginatedEmployees: Employee[] = [];
   selectedEmployees: Employee[] = [];
   allChecked = false;
   isEmployer = sessionStorage.getItem('role') === 'employer';
   private unsubscribe$ = new Subject<void>();
   private _searchTerm: string = '';
   loading = false;
+  totalRecords = 0;
+  rows = 10;
+  first = 0;
 
   columns = [
     { field: 'status', label: 'STATUS' },
@@ -69,6 +73,8 @@ export class ListComponent implements OnInit, OnDestroy {
                 : null,
           }));
           this.employees = [...this.originalEmployees];
+          this.totalRecords = this.employees.length;
+          this.setPage({ first: this.first, rows: this.rows });
           this.loading = false;
         },
         (error) => {
@@ -238,13 +244,27 @@ export class ListComponent implements OnInit, OnDestroy {
   applyFilter(): void {
     if (this._searchTerm) {
       this.employees = this.originalEmployees.filter(
-        (employee) =>
+        (employee: Employee) =>
           employee.firstName.toLowerCase().includes(this._searchTerm) ||
           employee.lastName.toLowerCase().includes(this._searchTerm)
       );
     } else {
       this.employees = [...this.originalEmployees];
     }
+    this.totalRecords = this.employees.length;
+    this.setPage({ first: 0, rows: this.rows });
+  }
+
+  paginate(event: any): void {
+    this.first = event.first;
+    this.rows = event.rows;
+    this.setPage(event);
+  }
+
+  setPage(event: any): void {
+    const start = event.first;
+    const end = start + event.rows;
+    this.paginatedEmployees = this.employees.slice(start, end);
   }
 
   resetSelection(): void {

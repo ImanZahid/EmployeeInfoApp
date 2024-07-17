@@ -1,7 +1,7 @@
 {
   "employees": [
     {
-      "status": true,
+      "status": false,
       "firstName": "kim",
       "lastName": "kardashian",
       "phoneNumber": "(123) 456-7898",
@@ -9,20 +9,8 @@
       "department": "Sales",
       "salary": 2222,
       "entryDate": "2024-07-30T19:00:00.000Z",
-      "leaveDate": "-",
+      "leaveDate": "2026-05-19T19:00:00.000Z",
       "id": "882522578"
-    },
-    {
-      "id": "119014366",
-      "status": false,
-      "firstName": "Iman",
-      "lastName": "Zahid",
-      "phoneNumber": "(222) 222-2222",
-      "email": "imanzahidzahid3@gmail.com",
-      "department": "Sales",
-      "salary": 222,
-      "entryDate": "2024-07-29T19:00:00.000Z",
-      "leaveDate": "2028-08-29T19:00:00.000Z"
     },
     {
       "id": "907022533",
@@ -47,18 +35,6 @@
       "entryDate": "2024-07-30T19:00:00.000Z",
       "leaveDate": "2024-07-26T19:00:00.000Z",
       "id": "909060282"
-    },
-    {
-      "id": "249143107",
-      "status": true,
-      "firstName": "sono",
-      "lastName": "mono",
-      "phoneNumber": "(399) 999-9999",
-      "email": "s0no@mono.com",
-      "department": "Marketing",
-      "salary": 22222222,
-      "entryDate": "2024-07-30T19:00:00.000Z",
-      "leaveDate": "-"
     },
     {
       "id": "130390938",
@@ -124,7 +100,7 @@
       "status": true,
       "firstName": "Eve",
       "lastName": "Jones",
-      "phoneNumber": "(555) 555-5555",
+      "phoneNumber": "(444) 444-4444",
       "email": "eve.jones@example.com",
       "department": "HR",
       "salary": 5200,
@@ -383,6 +359,18 @@
       "entryDate": "2024-08-10T19:00:00.000Z",
       "leaveDate": "-",
       "id": "126789012"
+    },
+    {
+      "id": "864587187",
+      "status": true,
+      "firstName": "Iman",
+      "lastName": "Zahid",
+      "phoneNumber": "(999) 999-9999",
+      "email": "imanzahidzahid3@gmail.com",
+      "department": "Sales",
+      "salary": 555555,
+      "entryDate": "2024-07-30T19:00:00.000Z",
+      "leaveDate": "-"
     }
   ]
 }

@@ -97,10 +97,6 @@ export class ListComponent implements OnInit, OnDestroy {
     return `${year}-${month}-${day}`;
   }
 
-  displayValue(value: any): string {
-    return value !== null && value !== undefined && value !== '' ? value : '-';
-  }
-
   onAddEmployee(): void {
     if (this.isEmployer) {
       this.router.navigate(['/new-employee']);

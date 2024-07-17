@@ -33,6 +33,7 @@ import { EmployeeFormComponent } from './pages/employee-form/employee-form.compo
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { InputMaskModule } from 'primeng/inputmask';
 import { PaginatorModule } from 'primeng/paginator';
+import { DisplayValuePipe } from './display-value.pipe';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -44,6 +45,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ListComponent,
     WelcomeComponent,
     EmployeeFormComponent,
+    DisplayValuePipe,
   ],
   imports: [
     BrowserModule,

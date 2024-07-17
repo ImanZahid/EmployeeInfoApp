@@ -74,7 +74,14 @@
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-employee>
-        <tr class="employee-row">
+        <tr
+          class="employee-row"
+          [ngStyle]="{
+            'background-color': employee.status
+              ? 'rgba(0, 128, 0, 0.1)'
+              : 'rgba(255, 0, 0, 0.1)'
+          }"
+        >
           <td *ngIf="isEmployer">
             <p-checkbox
               [(ngModel)]="employee.selected"
@@ -84,7 +91,7 @@
           </td>
           <ng-container *ngFor="let column of columns">
             <td *ngIf="isEmployer || column.field !== 'salary'">
-              {{ displayValue(employee[column.field]) | translate }}
+              {{ employee[column.field] | displayValue | translate }}
             </td>
           </ng-container>
           <td *ngIf="isEmployer" class="actions-cell">

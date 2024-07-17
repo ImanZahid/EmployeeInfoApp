@@ -29,18 +29,19 @@
         ></button>
         <div class="search-container">
           <input
+            #searchInput
             pInputText
             type="text"
             placeholder="{{ 'SEARCH' | translate }}"
             (input)="updateSearchTerm($event)"
-            (keydown.enter)="applyFilter()"
+            (keydown.enter)="applyFilter(searchInput)"
             class="search-input"
           />
           <button
             pButton
             icon="pi pi-search"
             class="p-button-rounded p-button-info p-button-sm"
-            (click)="applyFilter()"
+            (click)="applyFilter(searchInput)"
             pTooltip="{{ 'SEARCH' | translate }}"
             tooltipPosition="top"
           ></button>
@@ -125,7 +126,7 @@
         [first]="first"
         [rows]="rows"
         [totalRecords]="totalRecords"
-        [rowsPerPageOptions]="[10, 20, 30]"
+        [rowsPerPageOptions]="[10, 25, 50, 100]"
       ></p-paginator>
     </div>
 

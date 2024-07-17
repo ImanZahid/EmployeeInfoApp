@@ -17,7 +17,11 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot
   ): boolean {
     const isEmployer = localStorage.getItem('employer') === 'true';
-    if (next.routeConfig?.path === 'new-employee' && !isEmployer) {
+    if (
+      !isEmployer &&
+      (next.routeConfig?.path === 'new-employee' ||
+        next.routeConfig?.path === 'employee/:id')
+    ) {
       this.router.navigate(['/welcome']);
       return false;
     }

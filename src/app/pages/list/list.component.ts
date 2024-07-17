@@ -224,12 +224,14 @@ export class ListComponent implements OnInit, OnDestroy {
 
   toggleSelectAll(event: any): void {
     this.allChecked = event.checked;
-    this.selectedEmployees = this.allChecked ? [...this.employees] : [];
-    this.employees.forEach((employee) => (employee.selected = this.allChecked));
+    this.paginatedEmployees.forEach((employee) => {
+      employee.selected = this.allChecked;
+      this.updateSelectedEmployees(employee, this.allChecked);
+    });
   }
 
   goBackToHome(): void {
-    localStorage.clear();
+    localStorage.removeItem('employer');
     this.router.navigate(['/welcome']);
   }
 
@@ -237,7 +239,7 @@ export class ListComponent implements OnInit, OnDestroy {
     this._searchTerm = event.target.value.toLowerCase();
   }
 
-  applyFilter(): void {
+  applyFilter(searchInput: HTMLInputElement): void {
     if (this._searchTerm) {
       this.employees = this.originalEmployees.filter(
         (employee: Employee) =>
@@ -249,6 +251,8 @@ export class ListComponent implements OnInit, OnDestroy {
     }
     this.totalRecords = this.employees.length;
     this.setPage({ first: 0, rows: this.rows });
+    searchInput.value = '';
+    this._searchTerm = '';
   }
 
   paginate(event: any): void {

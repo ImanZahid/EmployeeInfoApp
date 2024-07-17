@@ -2,7 +2,7 @@
   "employees": [
     {
       "status": false,
-      "firstName": "kim",
+      "firstName": "kima",
       "lastName": "kardashian",
       "phoneNumber": "(123) 456-7898",
       "email": "kardashian@kim.com",
@@ -109,7 +109,7 @@
       "id": "105678901"
     },
     {
-      "status": true,
+      "status": false,
       "firstName": "Frank",
       "lastName": "Garcia",
       "phoneNumber": "(666) 666-6666",
@@ -117,7 +117,7 @@
       "department": "IT",
       "salary": 5800,
       "entryDate": "2024-06-15T19:00:00.000Z",
-      "leaveDate": "-",
+      "leaveDate": "2027-09-24T19:00:00.000Z",
       "id": "106789012"
     },
     {
@@ -370,6 +370,18 @@
       "department": "Sales",
       "salary": 555555,
       "entryDate": "2024-07-30T19:00:00.000Z",
+      "leaveDate": "-"
+    },
+    {
+      "id": "859264641",
+      "status": true,
+      "firstName": "mana",
+      "lastName": "Zahid",
+      "phoneNumber": "(333) 333-3333",
+      "email": "imanzahidzahid32@gmail.com",
+      "department": "Marketing",
+      "salary": 222222,
+      "entryDate": "2024-07-29T19:00:00.000Z",
       "leaveDate": "-"
     }
   ]

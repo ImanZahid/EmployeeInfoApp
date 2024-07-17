@@ -277,4 +277,8 @@ export class ListComponent implements OnInit, OnDestroy {
       count: this.selectedEmployees.length,
     });
   }
+
+  onPageChange(event: any): void {
+    this.paginate(event);
+  }
 }

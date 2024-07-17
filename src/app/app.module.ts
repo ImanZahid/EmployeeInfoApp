@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   HttpClientModule,
   HTTP_INTERCEPTORS,
@@ -32,6 +32,7 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { EmployeeFormComponent } from './pages/employee-form/employee-form.component';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { InputMaskModule } from 'primeng/inputmask';
+import { PaginatorModule } from 'primeng/paginator';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -65,6 +66,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ConfirmDialogModule,
     TooltipModule,
     InputMaskModule,
+    PaginatorModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -82,6 +84,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       multi: true,
     },
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
